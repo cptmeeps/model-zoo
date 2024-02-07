@@ -1,3 +1,10 @@
+#ckpts
+ViT-L-14-336px.pt
+bpe_simple_vocab_16e6.txt.gz
+tokenizer.model
+alpaca.json
+consolidated.00.pth
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
