@@ -5,6 +5,8 @@ from typing import Optional, Tuple, List
 from sentencepiece import SentencePieceProcessor
 import torch
 from torch import nn, tensor
+import torch.nn.functional as F
+from torch.utils.checkpoint import checkpoint
 from clip import load
 
 # llama
@@ -235,8 +237,8 @@ class Llava():
   def __init__(self, model_args):
     self.model_args = model_args
     self.tkzr = Tokenizer("tokenizer.model")
-    # torch.cuda.set_device(0)
-    # torch.set_default_tensor_type(torch.cuda.HalfTensor)  
+    torch.cuda.set_device(0)
+    torch.set_default_tensor_type(torch.cuda.HalfTensor)  
     ckpt = torch.load("consolidated.00.pth", map_location="cuda")
     model = Transformer(model_args)
     model.load_state_dict(ckpt, strict=False)
@@ -297,8 +299,8 @@ class Llava():
       ]
     }
     model = self.model # max_batch_size=4, max_seq_len=32
-    text_tkns = [self.tkzr.encode(x, bos=True, eos=False) for x in prompts['txt']]
-    text_out_tkns = generate(model, self.model, model_args, text_tkns, image=None)
+    tkns = [self.tkzr.encode(x, bos=True, eos=False) for x in prompts['txt']]
+    text_out_tkns = self.generate(tkns, image=None)
     [print(self.tkzr.decode(t)) for t in text_out_tkns]
 
 
