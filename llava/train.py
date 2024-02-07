@@ -50,3 +50,30 @@ class C3Dataset():
       return result
     else:
       raise StopIteration
+
+
+def finetune(train_len=6, bsz=4):
+  tkzr = Tokenizer("tokenizer.model")
+  model_args = ModelArgs(max_batch_size=bsz)
+  model = build(model_args)
+  # optimizer = optim.Adam(model.parameters(), lr=1e-6)
+  optimizer = optim.SGD(model.parameters(), lr=1e-4, momentum=0.9)
+  optimizer.zero_grad()
+  loss_fn = nn.CrossEntropyLoss()
+  ds = Dataset(bsz=bsz)
+  accum = 4 # 4
+  for n in range(0, train_len):
+    src, tgt = ds[n]
+    logits = model.forward(src)
+    logits = logits.view(-1, logits.size(-1))
+    tgt = tgt.view(-1)
+    loss = loss_fn(logits, tgt)
+    loss_value = loss.item()
+    loss = loss / accum
+    loss.backward()
+    if n % accum == 0:
+      torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
+      optimizer.step()
+      optimizer.zero_grad()
+      print(f'{n},{loss_value}')
+
