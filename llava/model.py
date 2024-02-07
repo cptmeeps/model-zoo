@@ -14,10 +14,6 @@ from torch import nn, tensor
 
 # utils
 
-def p(**kwargs):
-  for name, value in kwargs.items():
-    print(f"{name}: {value}")
-
 def print_memory_usage(stage):
     print(
       f"{stage}:",
