@@ -2,7 +2,7 @@ import os, math, time, random, json
 from PIL import Image
 
 import torch
-
+from clip import load
 
 # llama
 
@@ -169,7 +169,7 @@ class TransformerBlock(nn.Module):
 class Transformer(nn.Module):
   def __init__(self, params):
     super().__init__()
-    # self.clip, _ = load("ViT-L/14@336px")
+    self.clip, _ = load("ViT-L/14@336px")
     # self.mlp = MLP(params)
     self.params = params
     self.vocab_size = params.vocab_size
