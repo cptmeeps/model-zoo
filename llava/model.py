@@ -1,7 +1,10 @@
 import os, math, time, random, json
 from PIL import Image
-
+from dataclasses import dataclass
+from typing import Optional, Tuple, List
+from sentencepiece import SentencePieceProcessor
 import torch
+from torch import nn, tensor
 from clip import load
 
 # llama
@@ -227,57 +230,79 @@ class Transformer(nn.Module):
     output = self.output(h).float()
     return output
 
-class Llama():
+class Llava():
 
-  def generate(self, model, tokenizer, model_args, prompt_toks, image=None, max_gen=32):
-    # print('generate', 'prompt_toks', prompt_toks)
-    start_time = time.time()
-    bsz = len(prompt_toks)
-    if max_gen:
-      max_gen_len = max_gen
-    else:  
-      max_gen_len = model_args.max_seq_len - 1
-    min_tok_len = min(len(t) for t in prompt_toks)
-    max_tok_len = max(len(t) for t in prompt_toks)
-    ttl_len = min(model_args.max_seq_len, max_gen_len + max_tok_len)
-
-    pad_id = tokenizer.pad_id
-    gen_toks = torch.full((bsz, ttl_len), pad_id, dtype=torch.long)
-    for k, t in enumerate(prompt_toks):
-      gen_toks[k, : len(t)] = torch.tensor(t, dtype=torch.long)
-    eos_reached = torch.tensor([False] * bsz)
-    input_text_mask = gen_toks != pad_id
-    
-    for cur_pos in range(min_tok_len, ttl_len):
-      logits = model.forward(gen_toks[:, :cur_pos])#, image)
-      nxt_tok = torch.argmax(logits[:, -1], dim=-1)
-      nxt_tok = nxt_tok.reshape(-1)
-      nxt_tok = torch.where(input_text_mask[:, cur_pos], gen_toks[:, cur_pos], nxt_tok)
-      gen_toks[:, cur_pos] = nxt_tok
-      eos_reached |= (~input_text_mask[:, cur_pos]) & (nxt_tok == tokenizer.eos_id)
-      if all(eos_reached): break
-
-    out_tkns = []
-    for i, toks in enumerate(gen_toks.tolist()):
-      prompt_toks_len = len(prompt_toks[i])
-      toks = toks[prompt_toks_len : prompt_toks_len + max_gen_len]
-      if tokenizer.eos_id in toks:
-        eos_idx = toks.index(tokenizer.eos_id)
-        toks = toks[:eos_idx]
-      out_tkns.append(toks)  
-    print(f"generated in {time.time() - start_time:.2f} seconds")
-    return out_tkns
-
-  def build(self, model_args):
-    print('building llama')
-    start_time = time.time()
-    torch.cuda.set_device(0)
-    torch.set_default_tensor_type(torch.cuda.HalfTensor)  
-
+  def __init__(self, model_args):
+    self.model_args = model_args
+    self.tkzr = Tokenizer("tokenizer.model")
+    # torch.cuda.set_device(0)
+    # torch.set_default_tensor_type(torch.cuda.HalfTensor)  
     ckpt = torch.load("consolidated.00.pth", map_location="cuda")
     model = Transformer(model_args)
     model.load_state_dict(ckpt, strict=False)
-    model = model
-    print(f"loaded in {time.time() - start_time:.2f} seconds")
-    print_memory_usage('llama build')
-    return model
+    self.model = model
+
+  def generate(self, tkns, image=None, max_gen=32):
+    model = self.model
+    tkzr = self.tkzr
+    start_time = time.time()
+    bsz = len(tkns)
+    if max_gen:
+      max_gen_len = max_gen
+    else:  
+      max_gen_len = self.model_args.max_seq_len - 1
+    min_tkn_len = min(len(t) for t in tkns)
+    max_tkn_len = max(len(t) for t in tkns)
+    ttl_len = min(self.model_args.max_seq_len, max_gen_len + max_tkn_len)
+
+    pad_id = tkzr.pad_id
+    gen_tkns = torch.full((bsz, ttl_len), pad_id, dtype=torch.long)
+    for k, t in enumerate(tkns):
+      gen_tkns[k, : len(t)] = torch.tensor(t, dtype=torch.long)
+    eos_reached = torch.tensor([False] * bsz)
+    input_text_mask = gen_tkns != pad_id
+    
+    for cur_pos in range(min_tkn_len, ttl_len):
+      logits = model.forward(gen_tkns[:, :cur_pos])#, image)
+      nxt_tkn = torch.argmax(logits[:, -1], dim=-1)
+      nxt_tkn = nxt_tkn.reshape(-1)
+      nxt_tkn = torch.where(input_text_mask[:, cur_pos], gen_tkns[:, cur_pos], nxt_tkn)
+      gen_tkns[:, cur_pos] = nxt_tkn
+      eos_reached |= (~input_text_mask[:, cur_pos]) & (nxt_tkn == tkzr.eos_id)
+      if all(eos_reached): break
+
+    out_tkns = []
+    for i, t in enumerate(gen_tkns.tolist()):
+      tkns_len = len(tkns[i])
+      t = t[tkns_len : tkns_len + max_gen_len]
+      if tkzr.eos_id in t:
+        eos_idx = t.index(tkzr.eos_id)
+        t = t[:eos_idx]
+      out_tkns.append(t)  
+    print(f"generated in {time.time() - start_time:.2f} seconds")
+    return out_tkns
+
+  def test_text(self):
+    prompts = {
+      'txt' : [
+        "Simply put, the theory of relativity states that", # the laws of physics are the same for all non-accelerating observers, regardless of their state of motion or their energy content.
+        "Long ago there lived a magical cat named Puss" # in Boots. Puss in Boots was a very clever cat. He was so clever that he could talk. He was so clever that he could talk
+      ],
+      'img' : ["Simply put, the theory of relativity states that"],
+      'train' : [
+        "image label:", "image label:",
+        "photo description:", "photo description:",
+        "image title:", "image title:",
+        "picture summary:", "picture summary:",
+      ]
+    }
+    model = self.model # max_batch_size=4, max_seq_len=32
+    text_tkns = [self.tkzr.encode(x, bos=True, eos=False) for x in prompts['txt']]
+    text_out_tkns = generate(model, self.model, model_args, text_tkns, image=None)
+    [print(self.tkzr.decode(t)) for t in text_out_tkns]
+
+
+
+model_args = ModelArgs()
+llava = Llava(model_args)
+llava.test_text()
