@@ -252,6 +252,21 @@ def build(model_args):
   ckpt = torch.load("consolidated.00.pth", map_location="cuda")
   model = Transformer(model_args)
   model.load_state_dict(ckpt, strict=False)
+
+  for m in model.mlp.modules():
+    if isinstance(m, nn.Linear):
+      nn.init.normal_(m.weight, mean=0.0, std=0.02)
+      if m.bias is not None:
+        nn.init.constant_(m.bias, 0)
+
+  # for param in model.clip.parameters():
+  #   param.requires_grad = False
+
+  # for param in model.parameters():
+  #   param.requires_grad = True
+
+  # for param in model.mlp.parameters():
+  #   param.requires_grad = True
   return model
 
 def generate(self, model, tkzr, model_args, tkns, image=None, max_gen=32):
@@ -413,52 +428,41 @@ def _train(bsz=4):
     optimizer.step()
     optimizer.zero_grad()
 
-def train(train_len=4, bsz=4):
+def train(train_len=20, bsz=4):
   _, img_pre = load("ViT-L/14@336px")
   tkzr = Tokenizer("tokenizer.model")
   model_args = ModelArgs(max_batch_size=bsz)
   model = build(model_args)
-
+  print('mode')
   optimizer = optim.SGD(model.parameters(), lr=1e-4, momentum=0.9)
   optimizer.zero_grad()
   loss_fn = nn.CrossEntropyLoss()
   ds = Dataset(bsz=bsz)
-  # accum = 4 
+  accum = 4 
   for n in range(1, train_len):
-    print(f'\n{n}')
+    # print(f'\n{n}')
     src_txt, src_img, tgt = ds[n]
-    print('src_txt', src_txt.shape)
     logits = model.forward(src_txt, src_img)
     split_idx = src_txt.shape[1] - 1
-    print('split_idx', split_idx)
-    print('logits', logits.shape)
+    if split_idx == 0: continue
     logits = logits[:, -split_idx:, :]
-    print('logits', logits.shape)
     logits = logits.reshape(-1, logits.size(-1))
-    print('logits', logits.shape)
-    
     tgt_prefix = src_txt[:, 2:]
-    print('tgt_prefix', tgt_prefix.shape)
-    print('tgt', tgt.shape)
     tgt = tgt.unsqueeze(1)
-    print('tgt', tgt.shape)
     tgt = torch.cat((tgt_prefix, tgt), dim=1)
-    print('tgt', tgt.shape)
     tgt = tgt.reshape(-1)
-    print('tgt', tgt.shape)
-    
-    print('logits tgt', logits.shape, tgt.shape)
     loss = loss_fn(logits, tgt)
     loss_value = loss.item()
-    # loss = loss / accum
-    # loss.backward()
-    # if n % accum == 0:
-      # torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
-    # optimizer.step()
-    # optimizer.zero_grad()
-    print(f'{n},{loss_value}')
+    loss = loss / accum
+    loss.backward()
+    if n % accum == 0:
+      torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
+      optimizer.step()
+      optimizer.zero_grad()
+      print('logits tgt', logits.shape, tgt.shape)
+      print(f'{n},{loss_value}')
 
 
-train()
+train(train_len=1000)
 
 
