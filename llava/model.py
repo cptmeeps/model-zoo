@@ -5,6 +5,7 @@ from typing import Optional, Tuple, List
 from sentencepiece import SentencePieceProcessor
 import torch
 from torch import nn, tensor
+import torch.optim as optim
 import torch.nn.functional as F
 from torch.utils.checkpoint import checkpoint
 from clip import load
@@ -241,7 +242,7 @@ def build(model_args):
   ckpt = torch.load("consolidated.00.pth", map_location="cuda")
   model = Transformer(model_args)
   model.load_state_dict(ckpt, strict=False)
-  model = model
+  return model
 
 def generate(self, model, tkzr, model_args, tkns, image=None, max_gen=32):
   start_time = time.time()
@@ -305,10 +306,11 @@ def test(self):
 
 class Dataset():
   def __init__(self, seq_len=32, bsz=4, shuffle=True):
-    _, self.image_pre = load("ViT-L/14@336px")
-    self.tokenizer = Tokenizer('tokenizer.model')
+    self.clip, self.image_pre = load("ViT-L/14@336px")
+    self.tkzr = Tokenizer('tokenizer.model')
     self.seq_len = seq_len
     self.bsz = bsz
+    self.prompts = ["image label: ", "photo description: ","image title: ", "picture summary: "]
 
     with open('data/metadata.json', 'r') as file: 
       data = json.load(file)
@@ -336,21 +338,35 @@ class Dataset():
 
   def __getitem__(self, idx):
     batch = self.ds[idx]
-    images = []
-    all_tokens = []
+    _images = []
+    _text = []
+
+    text_toks = [self.tkzr.encode(d['blip_caption'], bos=False, eos=False) for d in batch]
+    min_len = min(len(x) for x in text_toks)
+    print('min_len', min_len)
     for data in batch:
-      image = Image.open(f"data/{data['image']}")
-      image = self.image_pre(image).unsqueeze(0).to("cuda", dtype=torch.float32)
-      prompt_tokens = self.tokenizer.encode(data['blip_caption'], bos=True, eos=False)
-      tokens = [self.tokenizer.pad_id] * self.seq_len
-      tokens[:len(prompt_tokens)] = prompt_tokens
-      tokens = torch.tensor(tokens, dtype=torch.long, device="cuda")
-      images.append(image)
-      all_tokens.append(tokens)
-    images_tensor = torch.cat(images, dim=0)
-    tokens_tensor = torch.stack(all_tokens, dim=0)
-    output = [tokens_tensor, images_tensor]
-    return output
+      img = Image.open(f"data/images/{data['image']}")
+      img = self.image_pre(img).unsqueeze(0).to("cuda")#, dtype=torch.float32)
+      _images.append(img)
+
+      txt = data['blip_caption']
+      prefix = random.choice(self.prompts)
+      txt = prefix + txt
+      txt = self.tkzr.encode(data['blip_caption'], bos=True, eos=False)
+      txt = txt[: min_len - 2]
+      # toks = [self.tkzr.pad_id] * self.seq_len
+      # toks[:len(txt)] = txt
+      txt = torch.tensor(txt, dtype=torch.long, device="cuda")
+      _text.append(txt)
+
+      # min_len = min([len(t) for t in caption])
+      # if min_len < 3: continue
+    img = torch.cat(_images, dim=0)
+    
+    tgt_txt
+    
+    txt = torch.stack(_text, dim=0)
+    return src_txt, src_img, tgt_txt
 
 
 def _train(bsz=4):
@@ -392,31 +408,35 @@ def _train(bsz=4):
     optimizer.step()
     optimizer.zero_grad()
 
-def train(train_len=6, bsz=4):
-  tkzr = Tokenizer("tokenizer.model")
+def train(train_len=2, bsz=4):
+  _, img_pre = load("ViT-L/14@336px")
   model_args = ModelArgs(max_batch_size=bsz)
   model = build(model_args)
-  # optimizer = optim.Adam(model.parameters(), lr=1e-6)
+
   optimizer = optim.SGD(model.parameters(), lr=1e-4, momentum=0.9)
   optimizer.zero_grad()
   loss_fn = nn.CrossEntropyLoss()
   ds = Dataset(bsz=bsz)
-  accum = 4 # 4
+  # accum = 4 
   for n in range(0, train_len):
-    src, tgt = ds[n]
+    txt, img = ds[0]
+    print('txt, img shape', txt.shape, img.shape)
+    
+    continue
     logits = model.forward(src)
     logits = logits.view(-1, logits.size(-1))
     tgt = tgt.view(-1)
     loss = loss_fn(logits, tgt)
     loss_value = loss.item()
-    loss = loss / accum
+    # loss = loss / accum
     loss.backward()
-    if n % accum == 0:
-      torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
-      optimizer.step()
-      optimizer.zero_grad()
-      print(f'{n},{loss_value}')
+    # if n % accum == 0:
+      # torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
+    optimizer.step()
+    optimizer.zero_grad()
+    print(f'{n},{loss_value}')
 
 
-ds = Dataset()
-print(ds[0])
+train()
+
+
