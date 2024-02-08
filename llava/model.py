@@ -232,79 +232,191 @@ class Transformer(nn.Module):
     output = self.output(h).float()
     return output
 
-class Llava():
+# model utils
 
-  def __init__(self, model_args):
-    self.model_args = model_args
-    self.tkzr = Tokenizer("tokenizer.model")
-    torch.cuda.set_device(0)
-    torch.set_default_tensor_type(torch.cuda.HalfTensor)  
-    ckpt = torch.load("consolidated.00.pth", map_location="cuda")
-    model = Transformer(model_args)
-    model.load_state_dict(ckpt, strict=False)
-    self.model = model
+def build(model_args):
+  tkzr = Tokenizer("tokenizer.model")
+  torch.cuda.set_device(0)
+  torch.set_default_tensor_type(torch.cuda.HalfTensor)  
+  ckpt = torch.load("consolidated.00.pth", map_location="cuda")
+  model = Transformer(model_args)
+  model.load_state_dict(ckpt, strict=False)
+  model = model
 
-  def generate(self, tkns, image=None, max_gen=32):
-    model = self.model
-    tkzr = self.tkzr
-    start_time = time.time()
-    bsz = len(tkns)
-    if max_gen:
-      max_gen_len = max_gen
-    else:  
-      max_gen_len = self.model_args.max_seq_len - 1
-    min_tkn_len = min(len(t) for t in tkns)
-    max_tkn_len = max(len(t) for t in tkns)
-    ttl_len = min(self.model_args.max_seq_len, max_gen_len + max_tkn_len)
+def generate(self, model, tkzr, model_args, tkns, image=None, max_gen=32):
+  start_time = time.time()
+  bsz = len(tkns)
+  if max_gen:
+    max_gen_len = max_gen
+  else:  
+    max_gen_len = model_args.max_seq_len - 1
+  min_tkn_len = min(len(t) for t in tkns)
+  max_tkn_len = max(len(t) for t in tkns)
+  ttl_len = min(model_args.max_seq_len, max_gen_len + max_tkn_len)
 
-    pad_id = tkzr.pad_id
-    gen_tkns = torch.full((bsz, ttl_len), pad_id, dtype=torch.long)
-    for k, t in enumerate(tkns):
-      gen_tkns[k, : len(t)] = torch.tensor(t, dtype=torch.long)
-    eos_reached = torch.tensor([False] * bsz)
-    input_text_mask = gen_tkns != pad_id
-    
-    for cur_pos in range(min_tkn_len, ttl_len):
-      logits = model.forward(gen_tkns[:, :cur_pos])#, image)
-      nxt_tkn = torch.argmax(logits[:, -1], dim=-1)
-      nxt_tkn = nxt_tkn.reshape(-1)
-      nxt_tkn = torch.where(input_text_mask[:, cur_pos], gen_tkns[:, cur_pos], nxt_tkn)
-      gen_tkns[:, cur_pos] = nxt_tkn
-      eos_reached |= (~input_text_mask[:, cur_pos]) & (nxt_tkn == tkzr.eos_id)
-      if all(eos_reached): break
+  pad_id = tkzr.pad_id
+  gen_tkns = torch.full((bsz, ttl_len), pad_id, dtype=torch.long)
+  for k, t in enumerate(tkns):
+    gen_tkns[k, : len(t)] = torch.tensor(t, dtype=torch.long)
+  eos_reached = torch.tensor([False] * bsz)
+  input_text_mask = gen_tkns != pad_id
+  
+  for cur_pos in range(min_tkn_len, ttl_len):
+    logits = model.forward(gen_tkns[:, :cur_pos])#, image)
+    nxt_tkn = torch.argmax(logits[:, -1], dim=-1)
+    nxt_tkn = nxt_tkn.reshape(-1)
+    nxt_tkn = torch.where(input_text_mask[:, cur_pos], gen_tkns[:, cur_pos], nxt_tkn)
+    gen_tkns[:, cur_pos] = nxt_tkn
+    eos_reached |= (~input_text_mask[:, cur_pos]) & (nxt_tkn == tkzr.eos_id)
+    if all(eos_reached): break
 
-    out_tkns = []
-    for i, t in enumerate(gen_tkns.tolist()):
-      tkns_len = len(tkns[i])
-      t = t[tkns_len : tkns_len + max_gen_len]
-      if tkzr.eos_id in t:
-        eos_idx = t.index(tkzr.eos_id)
-        t = t[:eos_idx]
-      out_tkns.append(t)  
-    print(f"generated in {time.time() - start_time:.2f} seconds")
-    return out_tkns
+  out_tkns = []
+  for i, t in enumerate(gen_tkns.tolist()):
+    tkns_len = len(tkns[i])
+    t = t[tkns_len : tkns_len + max_gen_len]
+    if tkzr.eos_id in t:
+      eos_idx = t.index(tkzr.eos_id)
+      t = t[:eos_idx]
+    out_tkns.append(t)  
+  print(f"generated in {time.time() - start_time:.2f} seconds")
+  return out_tkns
 
-  def test_text(self):
-    prompts = {
-      'txt' : [
-        "Simply put, the theory of relativity states that", # the laws of physics are the same for all non-accelerating observers, regardless of their state of motion or their energy content.
-        "Long ago there lived a magical cat named Puss" # in Boots. Puss in Boots was a very clever cat. He was so clever that he could talk. He was so clever that he could talk
-      ],
-      'img' : ["Simply put, the theory of relativity states that"],
-      'train' : [
-        "image label:", "image label:",
-        "photo description:", "photo description:",
-        "image title:", "image title:",
-        "picture summary:", "picture summary:",
-      ]
-    }
-    model = self.model # max_batch_size=4, max_seq_len=32
-    tkns = [self.tkzr.encode(x, bos=True, eos=False) for x in prompts['txt']]
-    text_out_tkns = self.generate(tkns, image=None)
-    [print(self.tkzr.decode(t)) for t in text_out_tkns]
+def test(self):
+  tkzr = Tokenizer("tokenizer.model")
+  prompts = {
+    'txt' : [
+      "Simply put, the theory of relativity states that", # the laws of physics are the same for all non-accelerating observers, regardless of their state of motion or their energy content.
+      "Long ago there lived a magical cat named Puss" # in Boots. Puss in Boots was a very clever cat. He was so clever that he could talk. He was so clever that he could talk
+    ],
+    'img' : ["Simply put, the theory of relativity states that"],
+    'train' : [
+      "image label:", "image label:",
+      "photo description:", "photo description:",
+      "image title:", "image title:",
+      "picture summary:", "picture summary:",
+    ]
+  }
+  model = build() # max_batch_size=4, max_seq_len=32
+  tkns = [tkzr.encode(x, bos=True, eos=False) for x in prompts['txt']]
+  text_out_tkns = generate(tkns, image=None)
+  [print(tkzr.decode(t)) for t in text_out_tkns]
+
+# train
+
+class Dataset():
+  def __init__(self, seq_len=32, bsz=4, shuffle=True):
+    _, self.image_pre = load("ViT-L/14@336px")
+    self.tokenizer = Tokenizer('tokenizer.model')
+    self.seq_len = seq_len
+    self.bsz = bsz
+
+    with open('data/metadata.json', 'r') as file: 
+      data = json.load(file)
+    ds = [x for x in data if x.get('image') and x.get('blip_caption')]
+    if shuffle: random.shuffle(ds)
+    if bsz:
+      ds = [ds[i:i + bsz] for i in range(0, len(ds) - len(ds) % bsz)] 
+    self.ds = ds
+    self.index = 0
+
+  def __len__(self):
+    return len(self.ds)
+
+  def __iter__(self):
+    self.index = 0
+    return self
+
+  def __next__(self):
+    if self.index < len(self.ds):
+      result = self.__getitem__(self.index)
+      self.index += 1
+      return result
+    else:
+      raise StopIteration
+
+  def __getitem__(self, idx):
+    batch = self.ds[idx]
+    images = []
+    all_tokens = []
+    for data in batch:
+      image = Image.open(f"data/{data['image']}")
+      image = self.image_pre(image).unsqueeze(0).to("cuda", dtype=torch.float32)
+      prompt_tokens = self.tokenizer.encode(data['blip_caption'], bos=True, eos=False)
+      tokens = [self.tokenizer.pad_id] * self.seq_len
+      tokens[:len(prompt_tokens)] = prompt_tokens
+      tokens = torch.tensor(tokens, dtype=torch.long, device="cuda")
+      images.append(image)
+      all_tokens.append(tokens)
+    images_tensor = torch.cat(images, dim=0)
+    tokens_tensor = torch.stack(all_tokens, dim=0)
+    output = [tokens_tensor, images_tensor]
+    return output
 
 
+def _train(bsz=4):
+  _, img_pre = load("ViT-L/14@336px")
+  tokenizer = Tokenizer("tokenizer.model")
+  model_args = ModelArgs(max_batch_size=4)
+  model = build(model_args)
 
-model_args = ModelArgs()
-llava = Llava(model_args)
-llava.test_text()
+  learning_rate = 0.01
+  optimizer = optim.SGD(model.parameters(), lr=learning_rate, momentum=0.9)
+  criterion = nn.CrossEntropyLoss()
+
+  ds = C3MDS(bsz=bsz)
+  for n in range(0,50):
+    imgs, txts = ds[n]
+    imgs = [img_pre(i).unsqueeze(0) for i in imgs]
+    imgs = torch.cat(imgs, dim=0).to("cuda", dtype=torch.float32)
+    caption = [tokenizer.encode(t, bos=False, eos=False) for t in txts]
+
+    min_len = min([len(t) for t in caption])
+    if min_len < 3: continue
+    cutoff = random.randint(1, min_len)
+    src = [x[:cutoff][:-1] for x in caption]
+    src = torch.tensor(src, dtype=torch.long, device="cuda")
+    prefix = prompts['train']
+    random.shuffle(prefix)
+    prefix = prefix[:bsz]
+    pre_prompt = [tokenizer.encode(x, bos=False, eos=False) for x in prefix]
+    pre_prompt = torch.tensor(pre_prompt, dtype=torch.long, device="cuda")
+    src = torch.cat((pre_prompt, src), dim=1)
+
+    tgt = [x[:cutoff][-1] for x in caption]
+    tgt = torch.tensor(tgt, dtype=torch.long, device="cuda")
+
+    logits = model.forward(src, imgs)
+    loss = criterion(logits[:, -1, :], tgt)
+    print(f'{n}\t{loss.item()}')
+    loss.backward()
+    optimizer.step()
+    optimizer.zero_grad()
+
+def train(train_len=6, bsz=4):
+  tkzr = Tokenizer("tokenizer.model")
+  model_args = ModelArgs(max_batch_size=bsz)
+  model = build(model_args)
+  # optimizer = optim.Adam(model.parameters(), lr=1e-6)
+  optimizer = optim.SGD(model.parameters(), lr=1e-4, momentum=0.9)
+  optimizer.zero_grad()
+  loss_fn = nn.CrossEntropyLoss()
+  ds = Dataset(bsz=bsz)
+  accum = 4 # 4
+  for n in range(0, train_len):
+    src, tgt = ds[n]
+    logits = model.forward(src)
+    logits = logits.view(-1, logits.size(-1))
+    tgt = tgt.view(-1)
+    loss = loss_fn(logits, tgt)
+    loss_value = loss.item()
+    loss = loss / accum
+    loss.backward()
+    if n % accum == 0:
+      torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
+      optimizer.step()
+      optimizer.zero_grad()
+      print(f'{n},{loss_value}')
+
+
+ds = Dataset()
+print(ds[0])

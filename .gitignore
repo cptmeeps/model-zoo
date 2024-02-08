@@ -4,6 +4,10 @@ bpe_simple_vocab_16e6.txt.gz
 tokenizer.model
 alpaca.json
 consolidated.00.pth
+chat.json
+images.zip
+metadata.json
+llava/data/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
