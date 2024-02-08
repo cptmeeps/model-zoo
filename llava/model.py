@@ -10,6 +10,10 @@ import torch.nn.functional as F
 from torch.utils.checkpoint import checkpoint
 from clip import load
 
+    # [print(tkzr.decode(x)) for x in src_txt.tolist()]
+    # print('tgt:', tkzr.decode(tgt.tolist())) 
+# print('src_txt, src_img, tgt', src_txt.shape, src_img.shape, tgt.shape)
+
 # llama
 
 @dataclass
@@ -176,7 +180,7 @@ class Transformer(nn.Module):
   def __init__(self, params):
     super().__init__()
     self.clip, _ = load("ViT-L/14@336px")
-    # self.mlp = MLP(params)
+    self.mlp = MLP(params)
     self.params = params
     self.vocab_size = params.vocab_size
     self.n_layers = params.n_layers
@@ -203,18 +207,24 @@ class Transformer(nn.Module):
     return freqs_cis
 
   # @torch.inference_mode()
-  def forward(self, toks): 
+  def forward(self, toks, imgs=None): 
     image = None
     _bsz, seqlen = toks.shape
     h = self.tok_embeddings(toks)
     
-    # if image != None:
-    #   image_encoded = self.clip.encode_image(image).to(h.device, dtype=torch.float16)
-    #   image_encoded.requires_grad_(True)
-    #   image_projected = self.mlp(image_encoded)
-    #   image_projected = image_projected.expand(_bsz, -1, -1)
-    #   h = torch.cat([image_projected, h], dim=1)
-    #   seqlen += image_projected.size(1)
+    if imgs != None:
+      image_encoded = self.clip.encode_image(imgs).to(h.device)#, dtype=torch.float16)
+      image_encoded.detach()
+      image_projected = self.mlp(image_encoded)
+      image_projected = image_projected.expand(_bsz, -1, -1)
+      seqlen += image_projected.size(1)
+      # print('image_projected.shape', image_projected.shape)
+      h_before = h[:, :1, :]  # Everything up to the insertion point
+      h_after = h[:, 1:, :]   # Everything after the insertion point
+      # print('h.shape', h.shape)
+      h = torch.cat([h_before, image_projected, h_after], dim=1)
+      # print('h.shape', h.shape)
+      
     
     self.freqs_cis = self.freqs_cis.to(h.device)
     freqs_cis = self.freqs_cis[:seqlen]
@@ -338,12 +348,12 @@ class Dataset():
 
   def __getitem__(self, idx):
     batch = self.ds[idx]
-    _images = []
-    _text = []
-
     text_toks = [self.tkzr.encode(d['blip_caption'], bos=False, eos=False) for d in batch]
     min_len = min(len(x) for x in text_toks)
-    print('min_len', min_len)
+
+    _images = []
+    _text = []
+    _target = []
     for data in batch:
       img = Image.open(f"data/images/{data['image']}")
       img = self.image_pre(img).unsqueeze(0).to("cuda")#, dtype=torch.float32)
@@ -354,20 +364,15 @@ class Dataset():
       txt = prefix + txt
       txt = self.tkzr.encode(data['blip_caption'], bos=True, eos=False)
       txt = txt[: min_len - 2]
-      # toks = [self.tkzr.pad_id] * self.seq_len
-      # toks[:len(txt)] = txt
+      _target.append(txt[-1])
+      txt = txt[:-1]
       txt = torch.tensor(txt, dtype=torch.long, device="cuda")
       _text.append(txt)
-
-      # min_len = min([len(t) for t in caption])
-      # if min_len < 3: continue
-    img = torch.cat(_images, dim=0)
-    
-    tgt_txt
-    
-    txt = torch.stack(_text, dim=0)
-    return src_txt, src_img, tgt_txt
-
+      
+    tgt = torch.tensor(_target, dtype=torch.long, device="cuda")
+    src_img = torch.cat(_images, dim=0)
+    src_txt = torch.stack(_text, dim=0)
+    return src_txt, src_img, tgt
 
 def _train(bsz=4):
   _, img_pre = load("ViT-L/14@336px")
@@ -408,8 +413,9 @@ def _train(bsz=4):
     optimizer.step()
     optimizer.zero_grad()
 
-def train(train_len=2, bsz=4):
+def train(train_len=4, bsz=4):
   _, img_pre = load("ViT-L/14@336px")
+  tkzr = Tokenizer("tokenizer.model")
   model_args = ModelArgs(max_batch_size=bsz)
   model = build(model_args)
 
@@ -418,22 +424,38 @@ def train(train_len=2, bsz=4):
   loss_fn = nn.CrossEntropyLoss()
   ds = Dataset(bsz=bsz)
   # accum = 4 
-  for n in range(0, train_len):
-    txt, img = ds[0]
-    print('txt, img shape', txt.shape, img.shape)
+  for n in range(1, train_len):
+    print(f'\n{n}')
+    src_txt, src_img, tgt = ds[n]
+    print('src_txt', src_txt.shape)
+    logits = model.forward(src_txt, src_img)
+    split_idx = src_txt.shape[1] - 1
+    print('split_idx', split_idx)
+    print('logits', logits.shape)
+    logits = logits[:, -split_idx:, :]
+    print('logits', logits.shape)
+    logits = logits.reshape(-1, logits.size(-1))
+    print('logits', logits.shape)
     
-    continue
-    logits = model.forward(src)
-    logits = logits.view(-1, logits.size(-1))
-    tgt = tgt.view(-1)
+    tgt_prefix = src_txt[:, 2:]
+    print('tgt_prefix', tgt_prefix.shape)
+    print('tgt', tgt.shape)
+    tgt = tgt.unsqueeze(1)
+    print('tgt', tgt.shape)
+    tgt = torch.cat((tgt_prefix, tgt), dim=1)
+    print('tgt', tgt.shape)
+    tgt = tgt.reshape(-1)
+    print('tgt', tgt.shape)
+    
+    print('logits tgt', logits.shape, tgt.shape)
     loss = loss_fn(logits, tgt)
     loss_value = loss.item()
     # loss = loss / accum
-    loss.backward()
+    # loss.backward()
     # if n % accum == 0:
       # torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
-    optimizer.step()
-    optimizer.zero_grad()
+    # optimizer.step()
+    # optimizer.zero_grad()
     print(f'{n},{loss_value}')
 
 
