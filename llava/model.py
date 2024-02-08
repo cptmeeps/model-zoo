@@ -218,13 +218,9 @@ class Transformer(nn.Module):
       image_projected = self.mlp(image_encoded)
       image_projected = image_projected.expand(_bsz, -1, -1)
       seqlen += image_projected.size(1)
-      # print('image_projected.shape', image_projected.shape)
-      h_before = h[:, :1, :]  # Everything up to the insertion point
-      h_after = h[:, 1:, :]   # Everything after the insertion point
-      # print('h.shape', h.shape)
+      h_before = h[:, :1, :]
+      h_after = h[:, 1:, :]
       h = torch.cat([h_before, image_projected, h_after], dim=1)
-      # print('h.shape', h.shape)
-      
     
     self.freqs_cis = self.freqs_cis.to(h.device)
     freqs_cis = self.freqs_cis[:seqlen]
@@ -253,17 +249,11 @@ def build(model_args):
   model = Transformer(model_args)
   model.load_state_dict(ckpt, strict=False)
 
-  for m in model.mlp.modules():
-    if isinstance(m, nn.Linear):
-      nn.init.normal_(m.weight, mean=0.0, std=0.02)
-      if m.bias is not None:
-        nn.init.constant_(m.bias, 0)
-
   # for param in model.clip.parameters():
   #   param.requires_grad = False
 
   # for param in model.parameters():
-  #   param.requires_grad = True
+  #   param.requires_grad = False
 
   # for param in model.mlp.parameters():
   #   param.requires_grad = True
@@ -428,12 +418,11 @@ def _train(bsz=4):
     optimizer.step()
     optimizer.zero_grad()
 
-def train(train_len=20, bsz=4):
+def train(train_len=20, bsz=3):
   _, img_pre = load("ViT-L/14@336px")
   tkzr = Tokenizer("tokenizer.model")
   model_args = ModelArgs(max_batch_size=bsz)
   model = build(model_args)
-  print('mode')
   optimizer = optim.SGD(model.parameters(), lr=1e-4, momentum=0.9)
   optimizer.zero_grad()
   loss_fn = nn.CrossEntropyLoss()
@@ -459,7 +448,7 @@ def train(train_len=20, bsz=4):
       torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
       optimizer.step()
       optimizer.zero_grad()
-      print('logits tgt', logits.shape, tgt.shape)
+      # print('logits tgt', logits.shape, tgt.shape)
       print(f'{n},{loss_value}')
 
 
