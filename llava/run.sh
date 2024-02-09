@@ -5,5 +5,5 @@ curl -o alpaca.json https://cptmeep-public.s3.us-west-2.amazonaws.com/datasets/a
 curl -o consolidated.00.pth https://cptmeep-public.s3.us-west-2.amazonaws.com/model_zoo/llama-2-7b/consolidated.00.pth
 
 curl -o llava/data/chat.json https://cptmeep-public.s3.us-west-2.amazonaws.com/model_zoo/llava/chat.json
-curl -o llava/data/images.zip https://cptmeep-public.s3.us-west-2.amazonaws.com/model_zoo/llava/images.zip
+curl -o data/images.zip https://cptmeep-public.s3.us-west-2.amazonaws.com/model_zoo/llava/images.zip
 curl -o llava/data/metadata.json https://cptmeep-public.s3.us-west-2.amazonaws.com/model_zoo/llava/metadata.json

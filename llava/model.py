@@ -16,6 +16,7 @@ from clip import load
     # print('tgt:', tkzr.decode(tgt.tolist())) 
 # print('src_txt, src_img, tgt', src_txt.shape, src_img.shape, tgt.shape)
 
+
 # llama
 
 @dataclass
@@ -250,6 +251,7 @@ def build(model_args):
   ckpt = torch.load("consolidated.00.pth", map_location="cuda")
   model = Transformer(model_args)
   model.load_state_dict(ckpt, strict=False)
+  print('model loaded')
 
   # for param in model.clip.parameters():
   #   param.requires_grad = False
@@ -338,6 +340,7 @@ class Dataset():
     ds = [ds[i:i + self.bsz] for i in range(0, len(ds) - len(ds) % self.bsz)] 
     self.ds = ds
     self.index = 0
+    print(data)
 
   def __len__(self):
     return len(self.ds)
@@ -363,16 +366,18 @@ class Dataset():
     _text = []
     _target = []
     for data in batch:
-      if len(_images) == self.bsz / self.bsz_mult: break
-      url = data['url']
-      try:
-        response = requests.get(url)
-        if response.status_code != 200: continue 
-        img = Image.open(BytesIO(response.content))
-        img = self.image_pre(img).unsqueeze(0).to("cuda")#, dtype=torch.float32)
-        _images.append(img)
-      except:
-        continue
+      
+      # if len(_images) == self.bsz / self.bsz_mult: break
+      # url = data['url']
+      # try:
+      #   response = requests.get(url)
+      #   if response.status_code != 200: continue 
+      # except:
+      #   continue
+      img = Image.open(f"dataset/{data['image']}")
+      img = Image.open(BytesIO(response.content))
+      img = self.image_pre(img).unsqueeze(0).to("cuda")#, dtype=torch.float32)
+      _images.append(img)
 
       txt = data['blip_caption']
       prefix = random.choice(self.prompts)
@@ -433,11 +438,23 @@ def train(train_len=20, bsz=3):
   tkzr = Tokenizer("tokenizer.model")
   model_args = ModelArgs(max_batch_size=bsz)
   model = build(model_args)
+
+  for name, param in model.named_parameters():
+    if 'clip' in name:
+      param.requires_grad = False
+    if 'layers' in name:
+      param.requires_grad = False
+    if name in ['norm.weight', 'output.weight', 'tok_embeddings.weight']:
+      param.requires_grad = False
+
   optimizer = optim.SGD(model.parameters(), lr=1e-4, momentum=0.9)
   optimizer.zero_grad()
   loss_fn = nn.CrossEntropyLoss()
   ds = Dataset(bsz=bsz)
   accum = 4 
+  gradient_accumulators = {}
+  training_steps = 0
+
   for n in range(1, train_len):
     # print(f'\n{n}')
     src_txt, src_img, tgt = ds[n]
@@ -457,20 +474,88 @@ def train(train_len=20, bsz=3):
     loss = loss_fn(logits, tgt)
     loss_value = loss.item()
     loss = loss / accum
+
     loss.backward()
+
+    # accumulate gradients for each layer
+    for name, param in model.named_parameters():
+      if param.requires_grad:
+        if param.grad is not None:  # Check if param.grad is not None
+          if name not in gradient_accumulators:
+            gradient_accumulators[name] = param.grad.clone()
+          else:
+            gradient_accumulators[name] += param.grad
+    
     if n % accum == 0:
       torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
       optimizer.step()
       optimizer.zero_grad()
-      # print('logits tgt', logits.shape, tgt.shape)
-      print(f'{n},{loss_value}')
+      print(f'\n{n},{loss_value}')
+      
+      # display accumulated gradients
+      print(f"Accumulated gradients after {training_steps} steps:")
+      for name, accumulated_grad in gradient_accumulators.items():
+        print(f"{name}: {accumulated_grad.norm().item()}")  # Using norm as a measure of magnitude
+      gradient_accumulators = {}  # Reset accumulators
 
 
-train(train_len=1000)
 
+
+# Assuming model is your neural network
+# Initialize an accumulator for gradients
+
+# for data, target in train_loader:  # Assuming train_loader is your DataLoader
+#   optimizer.zero_grad()  # Clear existing gradients
+#   output = model(data)  # Forward pass
+#   loss = loss_function(output, target)  # Compute loss
+#   loss.backward()  # Backward pass to calculate gradients
+  
+#   # Accumulate gradients for a specific layer
+#   for name, param in model.named_parameters():
+#     if "layer_name" in name:  # Replace 'layer_name' with your specific layer's name
+#       if gradient_accumulator is None:
+#         gradient_accumulator = param.grad.clone()
+#       else:
+#         gradient_accumulator += param.grad
+  
+#   optimizer.step()  # Update model parameters
+#   training_steps += 1
+  
+#   # Every 10 training steps, print the accumulated gradients and reset
+#   if training_steps % 10 == 0:
+#     print(f"Accumulated gradients after {training_steps} steps: {gradient_accumulator}")
+#     gradient_accumulator = None  # Reset accumulator
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+train(train_len=100)
 # ds = Dataset()
 # src_txt, src_img, tgt = ds[0]
 # print(src_txt.shape, src_img.shape, tgt.shape)
 
 
 
+# for name, param in model.named_parameters():
+#   if param.requires_grad:
+#     print(name)  
+# return
