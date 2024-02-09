@@ -1,4 +1,6 @@
 import os, math, time, random, json
+import requests
+from io import BytesIO
 from PIL import Image
 from dataclasses import dataclass
 from typing import Optional, Tuple, List
@@ -324,15 +326,16 @@ class Dataset():
     self.clip, self.image_pre = load("ViT-L/14@336px")
     self.tkzr = Tokenizer('tokenizer.model')
     self.seq_len = seq_len
-    self.bsz = bsz
+
     self.prompts = ["image label: ", "photo description: ","image title: ", "picture summary: "]
 
     with open('data/metadata.json', 'r') as file: 
       data = json.load(file)
     ds = [x for x in data if x.get('image') and x.get('blip_caption')]
     if shuffle: random.shuffle(ds)
-    if bsz:
-      ds = [ds[i:i + bsz] for i in range(0, len(ds) - len(ds) % bsz)] 
+    self.bsz_mult = 3
+    self.bsz = bsz * self.bsz_mult
+    ds = [ds[i:i + self.bsz] for i in range(0, len(ds) - len(ds) % self.bsz)] 
     self.ds = ds
     self.index = 0
 
@@ -360,9 +363,16 @@ class Dataset():
     _text = []
     _target = []
     for data in batch:
-      img = Image.open(f"data/images/{data['image']}")
-      img = self.image_pre(img).unsqueeze(0).to("cuda")#, dtype=torch.float32)
-      _images.append(img)
+      if len(_images) == self.bsz / self.bsz_mult: break
+      url = data['url']
+      try:
+        response = requests.get(url)
+        if response.status_code != 200: continue 
+        img = Image.open(BytesIO(response.content))
+        img = self.image_pre(img).unsqueeze(0).to("cuda")#, dtype=torch.float32)
+        _images.append(img)
+      except:
+        continue
 
       txt = data['blip_caption']
       prefix = random.choice(self.prompts)
@@ -431,15 +441,19 @@ def train(train_len=20, bsz=3):
   for n in range(1, train_len):
     # print(f'\n{n}')
     src_txt, src_img, tgt = ds[n]
+    
     logits = model.forward(src_txt, src_img)
+    
     split_idx = src_txt.shape[1] - 1
     if split_idx == 0: continue
     logits = logits[:, -split_idx:, :]
     logits = logits.reshape(-1, logits.size(-1))
+    
     tgt_prefix = src_txt[:, 2:]
     tgt = tgt.unsqueeze(1)
     tgt = torch.cat((tgt_prefix, tgt), dim=1)
     tgt = tgt.reshape(-1)
+    
     loss = loss_fn(logits, tgt)
     loss_value = loss.item()
     loss = loss / accum
@@ -453,5 +467,10 @@ def train(train_len=20, bsz=3):
 
 
 train(train_len=1000)
+
+# ds = Dataset()
+# src_txt, src_img, tgt = ds[0]
+# print(src_txt.shape, src_img.shape, tgt.shape)
+
 
 
