@@ -7,6 +7,8 @@ from typing import Optional, Tuple, List
 from sentencepiece import SentencePieceProcessor
 import torch
 from torch import nn, tensor
+import torch.autograd.profiler as profiler
+import torch.nn.init as init
 import torch.optim as optim
 import torch.nn.functional as F
 from torch.utils.checkpoint import checkpoint
@@ -79,7 +81,8 @@ class MLP(nn.Module):
     self.w2 = nn.Linear(args.dim, args.dim, bias=True).to(dtype=torch.float16)
 
   def forward(self, x):
-    h = checkpoint(lambda x: self.gelu(self.w1(x)), x)
+    h = self.w1(x)
+    h = self.gelu(h)
     h = self.w2(h)
     return h
 
@@ -220,10 +223,14 @@ class Transformer(nn.Module):
       image_encoded.detach()
       image_projected = self.mlp(image_encoded)
       image_projected = image_projected.expand(_bsz, -1, -1)
+      # print('image_projected.shape', image_projected.shape)
+      # print('image_projected: ', image_projected[0, 1, :])
       seqlen += image_projected.size(1)
+      # print('h after: ', h[0, 0, :])
       h_before = h[:, :1, :]
       h_after = h[:, 1:, :]
       h = torch.cat([h_before, image_projected, h_after], dim=1)
+      # print('h after: ', h[0, 0, :])
     
     self.freqs_cis = self.freqs_cis.to(h.device)
     freqs_cis = self.freqs_cis[:seqlen]
@@ -252,15 +259,6 @@ def build(model_args):
   model = Transformer(model_args)
   model.load_state_dict(ckpt, strict=False)
   print('model loaded')
-
-  # for param in model.clip.parameters():
-  #   param.requires_grad = False
-
-  # for param in model.parameters():
-  #   param.requires_grad = False
-
-  # for param in model.mlp.parameters():
-  #   param.requires_grad = True
   return model
 
 def generate(self, model, tkzr, model_args, tkns, image=None, max_gen=32):
@@ -340,7 +338,6 @@ class Dataset():
     ds = [ds[i:i + self.bsz] for i in range(0, len(ds) - len(ds) % self.bsz)] 
     self.ds = ds
     self.index = 0
-    print(data)
 
   def __len__(self):
     return len(self.ds)
@@ -366,17 +363,10 @@ class Dataset():
     _text = []
     _target = []
     for data in batch:
-      
-      # if len(_images) == self.bsz / self.bsz_mult: break
-      # url = data['url']
-      # try:
-      #   response = requests.get(url)
-      #   if response.status_code != 200: continue 
-      # except:
-      #   continue
-      img = Image.open(f"dataset/{data['image']}")
-      img = Image.open(BytesIO(response.content))
-      img = self.image_pre(img).unsqueeze(0).to("cuda")#, dtype=torch.float32)
+      if len(_images) == self.bsz / self.bsz_mult:
+        break
+      img = Image.open(f"data/images/{data['image']}")
+      img = self.image_pre(img).unsqueeze(0).to("cuda")
       _images.append(img)
 
       txt = data['blip_caption']
@@ -433,11 +423,18 @@ def _train(bsz=4):
     optimizer.step()
     optimizer.zero_grad()
 
-def train(train_len=20, bsz=3):
+def train(train_len=20, bsz=3, accum=4):
   _, img_pre = load("ViT-L/14@336px")
   tkzr = Tokenizer("tokenizer.model")
   model_args = ModelArgs(max_batch_size=bsz)
   model = build(model_args)
+
+  for name, m in model.mlp.named_modules():
+    if isinstance(m, nn.Linear):
+      init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='relu')
+      if m.bias is not None:
+        init.constant_(m.bias, 0)
+      print(f"kaiming normal init: {name}")
 
   for name, param in model.named_parameters():
     if 'clip' in name:
@@ -447,20 +444,26 @@ def train(train_len=20, bsz=3):
     if name in ['norm.weight', 'output.weight', 'tok_embeddings.weight']:
       param.requires_grad = False
 
+  for name, param in model.named_parameters():
+    if param.requires_grad:
+      if "weight" in name:
+        pass
+        print(f"{name} - row\n{param.data[0]}")
+        print(f"{name} - col\n{param.data[:, 0]}")
+
   optimizer = optim.SGD(model.parameters(), lr=1e-4, momentum=0.9)
-  optimizer.zero_grad()
+  # optimizer.zero_grad()
   loss_fn = nn.CrossEntropyLoss()
   ds = Dataset(bsz=bsz)
-  accum = 4 
   gradient_accumulators = {}
-  training_steps = 0
 
   for n in range(1, train_len):
-    # print(f'\n{n}')
     src_txt, src_img, tgt = ds[n]
-    
+    # print('\n src_txt, src_img, tgt', src_txt.shape, src_img.shape, tgt.shape)
+    # with profiler.profile(use_cuda=torch.cuda.is_available(), record_shapes=True) as prof:
     logits = model.forward(src_txt, src_img)
-    
+      # print(prof.key_averages().table(sort_by="cpu_time_total", row_limit=10))
+
     split_idx = src_txt.shape[1] - 1
     if split_idx == 0: continue
     logits = logits[:, -split_idx:, :]
@@ -480,7 +483,7 @@ def train(train_len=20, bsz=3):
     # accumulate gradients for each layer
     for name, param in model.named_parameters():
       if param.requires_grad:
-        if param.grad is not None:  # Check if param.grad is not None
+        if "weight" in name:
           if name not in gradient_accumulators:
             gradient_accumulators[name] = param.grad.clone()
           else:
@@ -490,41 +493,12 @@ def train(train_len=20, bsz=3):
       torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
       optimizer.step()
       optimizer.zero_grad()
-      print(f'\n{n},{loss_value}')
+      print(f'\n{n}\t{loss_value}')
       
       # display accumulated gradients
-      print(f"Accumulated gradients after {training_steps} steps:")
       for name, accumulated_grad in gradient_accumulators.items():
-        print(f"{name}: {accumulated_grad.norm().item()}")  # Using norm as a measure of magnitude
-      gradient_accumulators = {}  # Reset accumulators
-
-
-
-
-# Assuming model is your neural network
-# Initialize an accumulator for gradients
-
-# for data, target in train_loader:  # Assuming train_loader is your DataLoader
-#   optimizer.zero_grad()  # Clear existing gradients
-#   output = model(data)  # Forward pass
-#   loss = loss_function(output, target)  # Compute loss
-#   loss.backward()  # Backward pass to calculate gradients
-  
-#   # Accumulate gradients for a specific layer
-#   for name, param in model.named_parameters():
-#     if "layer_name" in name:  # Replace 'layer_name' with your specific layer's name
-#       if gradient_accumulator is None:
-#         gradient_accumulator = param.grad.clone()
-#       else:
-#         gradient_accumulator += param.grad
-  
-#   optimizer.step()  # Update model parameters
-#   training_steps += 1
-  
-#   # Every 10 training steps, print the accumulated gradients and reset
-#   if training_steps % 10 == 0:
-#     print(f"Accumulated gradients after {training_steps} steps: {gradient_accumulator}")
-#     gradient_accumulator = None  # Reset accumulator
+        print(f"{name}: {accumulated_grad.norm().item()}")  
+      gradient_accumulators = {}  
 
 
 
@@ -542,20 +516,7 @@ def train(train_len=20, bsz=3):
 
 
 
+train(train_len=10, bsz=8, accum=2)
 
 
 
-
-
-
-train(train_len=100)
-# ds = Dataset()
-# src_txt, src_img, tgt = ds[0]
-# print(src_txt.shape, src_img.shape, tgt.shape)
-
-
-
-# for name, param in model.named_parameters():
-#   if param.requires_grad:
-#     print(name)  
-# return

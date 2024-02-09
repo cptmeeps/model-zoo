@@ -22,6 +22,10 @@ curl -o llava/bpe_simple_vocab_16e6.txt.gz https://cptmeep-public.s3.us-west-2.a
 curl -o llava/tokenizer.model https://cptmeep-public.s3.us-west-2.amazonaws.com/model_zoo/llama-2-7b/tokenizer.model
 curl -o llava/consolidated.00.pth https://cptmeep-public.s3.us-west-2.amazonaws.com/model_zoo/llama-2-7b/consolidated.00.pth
 
+makedir llava/data
 curl -o llava/data/chat.json https://cptmeep-public.s3.us-west-2.amazonaws.com/model_zoo/llava/chat.json
-curl -o llava/data/images.zip https://cptmeep-public.s3.us-west-2.amazonaws.com/model_zoo/llava/images.zip
 curl -o llava/data/metadata.json https://cptmeep-public.s3.us-west-2.amazonaws.com/model_zoo/llava/metadata.json
+
+makedir llava/data/images
+curl -o llava/data/images.zip https://cptmeep-public.s3.us-west-2.amazonaws.com/model_zoo/llava/images.zip
+unzip llava/data/images.zip
