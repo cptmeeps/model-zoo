@@ -2,6 +2,7 @@ touch ~/.no_auto_tmux
 
 sudo apt update && sudo apt upgrade -y
 sudo apt-get install unzip
+sudo apt-get install graphviz
 
 pip3 install numpy panda torch ftfy 
 pip3 install regex sentencepiece 

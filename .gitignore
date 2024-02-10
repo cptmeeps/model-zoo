@@ -8,6 +8,8 @@ chat.json
 images.zip
 metadata.json
 llava/data/
+llava/data/images/
+*.jpg
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

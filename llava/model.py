@@ -5,6 +5,7 @@ from PIL import Image
 from dataclasses import dataclass
 from typing import Optional, Tuple, List
 from sentencepiece import SentencePieceProcessor
+from torchviz import make_dot
 import torch
 from torch import nn, tensor
 import torch.autograd.profiler as profiler
@@ -429,6 +430,7 @@ def train(train_len=20, bsz=3, accum=4):
   model_args = ModelArgs(max_batch_size=bsz)
   model = build(model_args)
 
+
   for name, m in model.mlp.named_modules():
     if isinstance(m, nn.Linear):
       init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='relu')
@@ -460,10 +462,15 @@ def train(train_len=20, bsz=3, accum=4):
   for n in range(1, train_len):
     src_txt, src_img, tgt = ds[n]
     # print('\n src_txt, src_img, tgt', src_txt.shape, src_img.shape, tgt.shape)
-    # with profiler.profile(use_cuda=torch.cuda.is_available(), record_shapes=True) as prof:
     logits = model.forward(src_txt, src_img)
-      # print(prof.key_averages().table(sort_by="cpu_time_total", row_limit=10))
 
+    # Visualize the first batch's computational graph
+    if n == 1:
+      make_dot(
+        logits, 
+        params=dict(model.named_parameters())
+      ).render("model_graph", format="png")
+    return
     split_idx = src_txt.shape[1] - 1
     if split_idx == 0: continue
     logits = logits[:, -split_idx:, :]
@@ -516,7 +523,7 @@ def train(train_len=20, bsz=3, accum=4):
 
 
 
-train(train_len=10, bsz=8, accum=2)
+train(train_len=10, bsz=4, accum=2)
 
 
 
