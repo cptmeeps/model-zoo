@@ -1,0 +1,3511 @@
+INFO:root:
+tok_embeddings - forward:
+Layer: Embedding
+Input shape: torch.Size([4, 4])
+Output shape: torch.Size([4, 4, 4096])
+Weight mean: -4.738569259643555e-05, std: 0.0169677734375
+
+INFO:root:
+clip.visual.conv1 - forward:
+Layer: Conv2d
+Input shape: torch.Size([4, 3, 336, 336])
+Output shape: torch.Size([4, 1024, 24, 24])
+Weight mean: -4.5299530029296875e-05, std: 0.0166168212890625
+
+INFO:root:
+clip.visual.ln_pre - forward:
+Layer: LayerNorm
+Input shape: torch.Size([4, 577, 1024])
+Output shape: torch.Size([4, 577, 1024])
+Weight mean: 0.42968127131462097, std: 0.49584609270095825
+
+INFO:root:
+clip.visual.transformer.resblocks.0.ln_1 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 0.3203355371952057, std: 0.33605310320854187
+
+INFO:root:
+clip.visual.transformer.resblocks.0.attn - forward:
+Layer: MultiheadAttention
+Input shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.0.ln_2 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 0.8141645193099976, std: 0.5961350798606873
+
+INFO:root:
+clip.visual.transformer.resblocks.0.mlp.c_fc - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 4096])
+Weight mean: 0.00021398067474365234, std: 0.01076507568359375
+
+INFO:root:
+clip.visual.transformer.resblocks.0.mlp.gelu - forward:
+Layer: QuickGELU
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 4096])
+
+INFO:root:
+clip.visual.transformer.resblocks.0.mlp.c_proj - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 2.753734588623047e-05, std: 0.0086212158203125
+
+INFO:root:
+clip.visual.transformer.resblocks.0.mlp - forward:
+Layer: Sequential
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.0 - forward:
+Layer: ResidualAttentionBlock
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.1.ln_1 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 0.46021339297294617, std: 0.23716142773628235
+
+INFO:root:
+clip.visual.transformer.resblocks.1.attn - forward:
+Layer: MultiheadAttention
+Input shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.1.ln_2 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 0.6540489792823792, std: 0.28734585642814636
+
+INFO:root:
+clip.visual.transformer.resblocks.1.mlp.c_fc - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 4096])
+Weight mean: -0.00013720989227294922, std: 0.01313018798828125
+
+INFO:root:
+clip.visual.transformer.resblocks.1.mlp.gelu - forward:
+Layer: QuickGELU
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 4096])
+
+INFO:root:
+clip.visual.transformer.resblocks.1.mlp.c_proj - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 9.059906005859375e-06, std: 0.01024627685546875
+
+INFO:root:
+clip.visual.transformer.resblocks.1.mlp - forward:
+Layer: Sequential
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.1 - forward:
+Layer: ResidualAttentionBlock
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.2.ln_1 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 0.5688397884368896, std: 0.24372708797454834
+
+INFO:root:
+clip.visual.transformer.resblocks.2.attn - forward:
+Layer: MultiheadAttention
+Input shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.2.ln_2 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 0.9027915000915527, std: 0.47131025791168213
+
+INFO:root:
+clip.visual.transformer.resblocks.2.mlp.c_fc - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 4096])
+Weight mean: 0.0003559589385986328, std: 0.012725830078125
+
+INFO:root:
+clip.visual.transformer.resblocks.2.mlp.gelu - forward:
+Layer: QuickGELU
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 4096])
+
+INFO:root:
+clip.visual.transformer.resblocks.2.mlp.c_proj - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 2.09808349609375e-05, std: 0.01024627685546875
+
+INFO:root:
+clip.visual.transformer.resblocks.2.mlp - forward:
+Layer: Sequential
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.2 - forward:
+Layer: ResidualAttentionBlock
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.3.ln_1 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 0.6499850749969482, std: 0.27136868238449097
+
+INFO:root:
+clip.visual.transformer.resblocks.3.attn - forward:
+Layer: MultiheadAttention
+Input shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.3.ln_2 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 0.9590897560119629, std: 0.428989052772522
+
+INFO:root:
+clip.visual.transformer.resblocks.3.mlp.c_fc - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 4096])
+Weight mean: -1.4007091522216797e-05, std: 0.01348114013671875
+
+INFO:root:
+clip.visual.transformer.resblocks.3.mlp.gelu - forward:
+Layer: QuickGELU
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 4096])
+
+INFO:root:
+clip.visual.transformer.resblocks.3.mlp.c_proj - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 1.0728836059570312e-06, std: 0.01092529296875
+
+INFO:root:
+clip.visual.transformer.resblocks.3.mlp - forward:
+Layer: Sequential
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.3 - forward:
+Layer: ResidualAttentionBlock
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.4.ln_1 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 0.7117363214492798, std: 0.20311278104782104
+
+INFO:root:
+clip.visual.transformer.resblocks.4.attn - forward:
+Layer: MultiheadAttention
+Input shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.4.ln_2 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 1.0562779903411865, std: 0.4285208582878113
+
+INFO:root:
+clip.visual.transformer.resblocks.4.mlp.c_fc - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 4096])
+Weight mean: -0.00014901161193847656, std: 0.014312744140625
+
+INFO:root:
+clip.visual.transformer.resblocks.4.mlp.gelu - forward:
+Layer: QuickGELU
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 4096])
+
+INFO:root:
+clip.visual.transformer.resblocks.4.mlp.c_proj - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: -3.0994415283203125e-06, std: 0.01177215576171875
+
+INFO:root:
+clip.visual.transformer.resblocks.4.mlp - forward:
+Layer: Sequential
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.4 - forward:
+Layer: ResidualAttentionBlock
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.5.ln_1 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 0.8654745817184448, std: 0.1365492194890976
+
+INFO:root:
+clip.visual.transformer.resblocks.5.attn - forward:
+Layer: MultiheadAttention
+Input shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.5.ln_2 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 1.1033918857574463, std: 0.18675635755062103
+
+INFO:root:
+clip.visual.transformer.resblocks.5.mlp.c_fc - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 4096])
+Weight mean: -2.7418136596679688e-05, std: 0.01485443115234375
+
+INFO:root:
+clip.visual.transformer.resblocks.5.mlp.gelu - forward:
+Layer: QuickGELU
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 4096])
+
+INFO:root:
+clip.visual.transformer.resblocks.5.mlp.c_proj - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 5.9604644775390625e-06, std: 0.012237548828125
+
+INFO:root:
+clip.visual.transformer.resblocks.5.mlp - forward:
+Layer: Sequential
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.5 - forward:
+Layer: ResidualAttentionBlock
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.6.ln_1 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 0.952700674533844, std: 0.17621511220932007
+
+INFO:root:
+clip.visual.transformer.resblocks.6.attn - forward:
+Layer: MultiheadAttention
+Input shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.6.ln_2 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 1.1323049068450928, std: 0.201393723487854
+
+INFO:root:
+clip.visual.transformer.resblocks.6.mlp.c_fc - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 4096])
+Weight mean: 7.343292236328125e-05, std: 0.0146942138671875
+
+INFO:root:
+clip.visual.transformer.resblocks.6.mlp.gelu - forward:
+Layer: QuickGELU
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 4096])
+
+INFO:root:
+clip.visual.transformer.resblocks.6.mlp.c_proj - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: -3.2186508178710938e-06, std: 0.01238250732421875
+
+INFO:root:
+clip.visual.transformer.resblocks.6.mlp - forward:
+Layer: Sequential
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.6 - forward:
+Layer: ResidualAttentionBlock
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.7.ln_1 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 1.1192147731781006, std: 0.1320425271987915
+
+INFO:root:
+clip.visual.transformer.resblocks.7.attn - forward:
+Layer: MultiheadAttention
+Input shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.7.ln_2 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 1.181714653968811, std: 0.15656962990760803
+
+INFO:root:
+clip.visual.transformer.resblocks.7.mlp.c_fc - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 4096])
+Weight mean: 2.086162567138672e-05, std: 0.01486968994140625
+
+INFO:root:
+clip.visual.transformer.resblocks.7.mlp.gelu - forward:
+Layer: QuickGELU
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 4096])
+
+INFO:root:
+clip.visual.transformer.resblocks.7.mlp.c_proj - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: -5.543231964111328e-06, std: 0.01275634765625
+
+INFO:root:
+clip.visual.transformer.resblocks.7.mlp - forward:
+Layer: Sequential
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.7 - forward:
+Layer: ResidualAttentionBlock
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.8.ln_1 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 1.1419570446014404, std: 0.12036445736885071
+
+INFO:root:
+clip.visual.transformer.resblocks.8.attn - forward:
+Layer: MultiheadAttention
+Input shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.8.ln_2 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 1.1965546607971191, std: 0.13003584742546082
+
+INFO:root:
+clip.visual.transformer.resblocks.8.mlp.c_fc - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 4096])
+Weight mean: 0.00011014938354492188, std: 0.0149688720703125
+
+INFO:root:
+clip.visual.transformer.resblocks.8.mlp.gelu - forward:
+Layer: QuickGELU
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 4096])
+
+INFO:root:
+clip.visual.transformer.resblocks.8.mlp.c_proj - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: -1.0728836059570312e-06, std: 0.01313018798828125
+
+INFO:root:
+clip.visual.transformer.resblocks.8.mlp - forward:
+Layer: Sequential
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.8 - forward:
+Layer: ResidualAttentionBlock
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.9.ln_1 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 1.1252083778381348, std: 0.11110043525695801
+
+INFO:root:
+clip.visual.transformer.resblocks.9.attn - forward:
+Layer: MultiheadAttention
+Input shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.9.ln_2 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 1.2298439741134644, std: 0.12147493660449982
+
+INFO:root:
+clip.visual.transformer.resblocks.9.mlp.c_fc - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 4096])
+Weight mean: 0.00012350082397460938, std: 0.01506805419921875
+
+INFO:root:
+clip.visual.transformer.resblocks.9.mlp.gelu - forward:
+Layer: QuickGELU
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 4096])
+
+INFO:root:
+clip.visual.transformer.resblocks.9.mlp.c_proj - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: -1.6093254089355469e-06, std: 0.01308441162109375
+
+INFO:root:
+clip.visual.transformer.resblocks.9.mlp - forward:
+Layer: Sequential
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.9 - forward:
+Layer: ResidualAttentionBlock
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.10.ln_1 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 1.1821266412734985, std: 0.11069992929697037
+
+INFO:root:
+clip.visual.transformer.resblocks.10.attn - forward:
+Layer: MultiheadAttention
+Input shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.10.ln_2 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 1.2934017181396484, std: 0.10978677868843079
+
+INFO:root:
+clip.visual.transformer.resblocks.10.mlp.c_fc - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 4096])
+Weight mean: 0.00012445449829101562, std: 0.0152587890625
+
+INFO:root:
+clip.visual.transformer.resblocks.10.mlp.gelu - forward:
+Layer: QuickGELU
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 4096])
+
+INFO:root:
+clip.visual.transformer.resblocks.10.mlp.c_proj - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: -1.6093254089355469e-06, std: 0.01348114013671875
+
+INFO:root:
+clip.visual.transformer.resblocks.10.mlp - forward:
+Layer: Sequential
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.10 - forward:
+Layer: ResidualAttentionBlock
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.11.ln_1 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 1.1845362186431885, std: 0.11857672780752182
+
+INFO:root:
+clip.visual.transformer.resblocks.11.attn - forward:
+Layer: MultiheadAttention
+Input shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.11.ln_2 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 1.3700640201568604, std: 0.1261214166879654
+
+INFO:root:
+clip.visual.transformer.resblocks.11.mlp.c_fc - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 4096])
+Weight mean: 0.00014293193817138672, std: 0.01532745361328125
+
+INFO:root:
+clip.visual.transformer.resblocks.11.mlp.gelu - forward:
+Layer: QuickGELU
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 4096])
+
+INFO:root:
+clip.visual.transformer.resblocks.11.mlp.c_proj - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: -2.1457672119140625e-06, std: 0.0136260986328125
+
+INFO:root:
+clip.visual.transformer.resblocks.11.mlp - forward:
+Layer: Sequential
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.11 - forward:
+Layer: ResidualAttentionBlock
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.12.ln_1 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 1.2078748941421509, std: 0.12540502846240997
+
+INFO:root:
+clip.visual.transformer.resblocks.12.attn - forward:
+Layer: MultiheadAttention
+Input shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.12.ln_2 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 1.4018895626068115, std: 0.13263757526874542
+
+INFO:root:
+clip.visual.transformer.resblocks.12.mlp.c_fc - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 4096])
+Weight mean: -6.186962127685547e-05, std: 0.0154876708984375
+
+INFO:root:
+clip.visual.transformer.resblocks.12.mlp.gelu - forward:
+Layer: QuickGELU
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 4096])
+
+INFO:root:
+clip.visual.transformer.resblocks.12.mlp.c_proj - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: -2.9802322387695312e-06, std: 0.0135650634765625
+
+INFO:root:
+clip.visual.transformer.resblocks.12.mlp - forward:
+Layer: Sequential
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.12 - forward:
+Layer: ResidualAttentionBlock
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.13.ln_1 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 1.2630892992019653, std: 0.13717249035835266
+
+INFO:root:
+clip.visual.transformer.resblocks.13.attn - forward:
+Layer: MultiheadAttention
+Input shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.13.ln_2 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 1.4669408798217773, std: 0.14325913786888123
+
+INFO:root:
+clip.visual.transformer.resblocks.13.mlp.c_fc - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 4096])
+Weight mean: -1.817941665649414e-05, std: 0.0152130126953125
+
+INFO:root:
+clip.visual.transformer.resblocks.13.mlp.gelu - forward:
+Layer: QuickGELU
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 4096])
+
+INFO:root:
+clip.visual.transformer.resblocks.13.mlp.c_proj - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: -2.562999725341797e-06, std: 0.01396942138671875
+
+INFO:root:
+clip.visual.transformer.resblocks.13.mlp - forward:
+Layer: Sequential
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.13 - forward:
+Layer: ResidualAttentionBlock
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.14.ln_1 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 1.26884126663208, std: 0.1186383068561554
+
+INFO:root:
+clip.visual.transformer.resblocks.14.attn - forward:
+Layer: MultiheadAttention
+Input shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.14.ln_2 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 1.5779056549072266, std: 0.15987642109394073
+
+INFO:root:
+clip.visual.transformer.resblocks.14.mlp.c_fc - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 4096])
+Weight mean: -0.00012564659118652344, std: 0.0151824951171875
+
+INFO:root:
+clip.visual.transformer.resblocks.14.mlp.gelu - forward:
+Layer: QuickGELU
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 4096])
+
+INFO:root:
+clip.visual.transformer.resblocks.14.mlp.c_proj - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: -3.516674041748047e-06, std: 0.01453399658203125
+
+INFO:root:
+clip.visual.transformer.resblocks.14.mlp - forward:
+Layer: Sequential
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.14 - forward:
+Layer: ResidualAttentionBlock
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.15.ln_1 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 1.2914845943450928, std: 0.09872306138277054
+
+INFO:root:
+clip.visual.transformer.resblocks.15.attn - forward:
+Layer: MultiheadAttention
+Input shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.15.ln_2 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 1.7082254886627197, std: 0.16611061990261078
+
+INFO:root:
+clip.visual.transformer.resblocks.15.mlp.c_fc - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 4096])
+Weight mean: -0.00010770559310913086, std: 0.015106201171875
+
+INFO:root:
+clip.visual.transformer.resblocks.15.mlp.gelu - forward:
+Layer: QuickGELU
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 4096])
+
+INFO:root:
+clip.visual.transformer.resblocks.15.mlp.c_proj - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: -1.9073486328125e-06, std: 0.014617919921875
+
+INFO:root:
+clip.visual.transformer.resblocks.15.mlp - forward:
+Layer: Sequential
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.15 - forward:
+Layer: ResidualAttentionBlock
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.16.ln_1 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 1.388733148574829, std: 0.09943204373121262
+
+INFO:root:
+clip.visual.transformer.resblocks.16.attn - forward:
+Layer: MultiheadAttention
+Input shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.16.ln_2 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 2.0142714977264404, std: 0.21479251980781555
+
+INFO:root:
+clip.visual.transformer.resblocks.16.mlp.c_fc - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 4096])
+Weight mean: -9.143352508544922e-05, std: 0.014862060546875
+
+INFO:root:
+clip.visual.transformer.resblocks.16.mlp.gelu - forward:
+Layer: QuickGELU
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 4096])
+
+INFO:root:
+clip.visual.transformer.resblocks.16.mlp.c_proj - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: -1.1920928955078125e-06, std: 0.01538848876953125
+
+INFO:root:
+clip.visual.transformer.resblocks.16.mlp - forward:
+Layer: Sequential
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.16 - forward:
+Layer: ResidualAttentionBlock
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.17.ln_1 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 1.4242854118347168, std: 0.0988486111164093
+
+INFO:root:
+clip.visual.transformer.resblocks.17.attn - forward:
+Layer: MultiheadAttention
+Input shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.17.ln_2 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 2.4176292419433594, std: 0.27702534198760986
+
+INFO:root:
+clip.visual.transformer.resblocks.17.mlp.c_fc - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 4096])
+Weight mean: -9.781122207641602e-05, std: 0.0147552490234375
+
+INFO:root:
+clip.visual.transformer.resblocks.17.mlp.gelu - forward:
+Layer: QuickGELU
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 4096])
+
+INFO:root:
+clip.visual.transformer.resblocks.17.mlp.c_proj - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 1.3709068298339844e-06, std: 0.0156707763671875
+
+INFO:root:
+clip.visual.transformer.resblocks.17.mlp - forward:
+Layer: Sequential
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.17 - forward:
+Layer: ResidualAttentionBlock
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.18.ln_1 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 1.5272397994995117, std: 0.09833629429340363
+
+INFO:root:
+clip.visual.transformer.resblocks.18.attn - forward:
+Layer: MultiheadAttention
+Input shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.18.ln_2 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 2.6490745544433594, std: 0.29578548669815063
+
+INFO:root:
+clip.visual.transformer.resblocks.18.mlp.c_fc - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 4096])
+Weight mean: -0.0001571178436279297, std: 0.0147705078125
+
+INFO:root:
+clip.visual.transformer.resblocks.18.mlp.gelu - forward:
+Layer: QuickGELU
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 4096])
+
+INFO:root:
+clip.visual.transformer.resblocks.18.mlp.c_proj - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 1.5497207641601562e-06, std: 0.01580810546875
+
+INFO:root:
+clip.visual.transformer.resblocks.18.mlp - forward:
+Layer: Sequential
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.18 - forward:
+Layer: ResidualAttentionBlock
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.19.ln_1 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 1.5352776050567627, std: 0.09953764081001282
+
+INFO:root:
+clip.visual.transformer.resblocks.19.attn - forward:
+Layer: MultiheadAttention
+Input shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.19.ln_2 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 2.7730329036712646, std: 0.2968481779098511
+
+INFO:root:
+clip.visual.transformer.resblocks.19.mlp.c_fc - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 4096])
+Weight mean: -0.0001480579376220703, std: 0.0149078369140625
+
+INFO:root:
+clip.visual.transformer.resblocks.19.mlp.gelu - forward:
+Layer: QuickGELU
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 4096])
+
+INFO:root:
+clip.visual.transformer.resblocks.19.mlp.c_proj - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 5.960464477539062e-07, std: 0.01611328125
+
+INFO:root:
+clip.visual.transformer.resblocks.19.mlp - forward:
+Layer: Sequential
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.19 - forward:
+Layer: ResidualAttentionBlock
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.20.ln_1 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 1.5758538246154785, std: 0.10010196268558502
+
+INFO:root:
+clip.visual.transformer.resblocks.20.attn - forward:
+Layer: MultiheadAttention
+Input shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.20.ln_2 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 3.1429390907287598, std: 0.31935590505599976
+
+INFO:root:
+clip.visual.transformer.resblocks.20.mlp.c_fc - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 4096])
+Weight mean: -4.369020462036133e-05, std: 0.0151824951171875
+
+INFO:root:
+clip.visual.transformer.resblocks.20.mlp.gelu - forward:
+Layer: QuickGELU
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 4096])
+
+INFO:root:
+clip.visual.transformer.resblocks.20.mlp.c_proj - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 7.748603820800781e-07, std: 0.0173187255859375
+
+INFO:root:
+clip.visual.transformer.resblocks.20.mlp - forward:
+Layer: Sequential
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.20 - forward:
+Layer: ResidualAttentionBlock
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.21.ln_1 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 1.5700371265411377, std: 0.10081294178962708
+
+INFO:root:
+clip.visual.transformer.resblocks.21.attn - forward:
+Layer: MultiheadAttention
+Input shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.21.ln_2 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 3.007479667663574, std: 0.25833553075790405
+
+INFO:root:
+clip.visual.transformer.resblocks.21.mlp.c_fc - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 4096])
+Weight mean: -0.00010609626770019531, std: 0.01532745361328125
+
+INFO:root:
+clip.visual.transformer.resblocks.21.mlp.gelu - forward:
+Layer: QuickGELU
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 4096])
+
+INFO:root:
+clip.visual.transformer.resblocks.21.mlp.c_proj - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 3.635883331298828e-06, std: 0.0177764892578125
+
+INFO:root:
+clip.visual.transformer.resblocks.21.mlp - forward:
+Layer: Sequential
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.21 - forward:
+Layer: ResidualAttentionBlock
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.22.ln_1 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 1.653771996498108, std: 0.2162732481956482
+
+INFO:root:
+clip.visual.transformer.resblocks.22.attn - forward:
+Layer: MultiheadAttention
+Input shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.22.ln_2 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 2.4897234439849854, std: 0.17735536396503448
+
+INFO:root:
+clip.visual.transformer.resblocks.22.mlp.c_fc - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 4096])
+Weight mean: -0.0002149343490600586, std: 0.01503753662109375
+
+INFO:root:
+clip.visual.transformer.resblocks.22.mlp.gelu - forward:
+Layer: QuickGELU
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 4096])
+
+INFO:root:
+clip.visual.transformer.resblocks.22.mlp.c_proj - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: -3.814697265625e-06, std: 0.01727294921875
+
+INFO:root:
+clip.visual.transformer.resblocks.22.mlp - forward:
+Layer: Sequential
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.22 - forward:
+Layer: ResidualAttentionBlock
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.23.ln_1 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 1.4596171379089355, std: 0.0810026302933693
+
+INFO:root:
+clip.visual.transformer.resblocks.23.attn - forward:
+Layer: MultiheadAttention
+Input shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.23.ln_2 - forward:
+Layer: LayerNorm
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 1.6142210960388184, std: 0.0988667905330658
+
+INFO:root:
+clip.visual.transformer.resblocks.23.mlp.c_fc - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 4096])
+Weight mean: 0.0001876354217529297, std: 0.01522064208984375
+
+INFO:root:
+clip.visual.transformer.resblocks.23.mlp.gelu - forward:
+Layer: QuickGELU
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 4096])
+
+INFO:root:
+clip.visual.transformer.resblocks.23.mlp.c_proj - forward:
+Layer: Linear
+Input shape: torch.Size([577, 4, 4096])
+Output shape: torch.Size([577, 4, 1024])
+Weight mean: 5.364418029785156e-06, std: 0.0145721435546875
+
+INFO:root:
+clip.visual.transformer.resblocks.23.mlp - forward:
+Layer: Sequential
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks.23 - forward:
+Layer: ResidualAttentionBlock
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer.resblocks - forward:
+Layer: Sequential
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual.transformer - forward:
+Layer: Transformer
+Input shape: torch.Size([577, 4, 1024])
+Output shape: torch.Size([577, 4, 1024])
+
+INFO:root:
+clip.visual - forward:
+Layer: VisionTransformer
+Input shape: torch.Size([4, 3, 336, 336])
+Output shape: torch.Size([4, 577, 1024])
+
+INFO:root:
+mlp.w1 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 577, 1024])
+Output shape: torch.Size([4, 577, 4096])
+Weight mean: 9.775161743164062e-06, std: 0.0221099853515625
+
+INFO:root:
+mlp.gelu - forward:
+Layer: GELU
+Input shape: torch.Size([4, 577, 4096])
+Output shape: torch.Size([4, 577, 4096])
+
+INFO:root:
+mlp.w2 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 577, 4096])
+Output shape: torch.Size([4, 577, 4096])
+Weight mean: 3.337860107421875e-06, std: 0.0220947265625
+
+INFO:root:
+mlp - forward:
+Layer: MLP
+Input shape: torch.Size([4, 577, 1024])
+Output shape: torch.Size([4, 577, 4096])
+
+INFO:root:
+layers.0.attention_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.0157012939453125, std: 0.034912109375
+
+INFO:root:
+layers.0.attention.wq - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -3.039836883544922e-06, std: 0.01348114013671875
+
+INFO:root:
+layers.0.attention.wk - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 8.64267349243164e-06, std: 0.01509857177734375
+
+INFO:root:
+layers.0.attention.wv - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 4.76837158203125e-07, std: 0.01105499267578125
+
+INFO:root:
+layers.0.attention.wo - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -1.6093254089355469e-06, std: 0.00717926025390625
+
+INFO:root:
+layers.0.ffn_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.0545654296875, std: 0.01119232177734375
+
+INFO:root:
+layers.0.feed_forward.w1 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -1.5139579772949219e-05, std: 0.0164031982421875
+
+INFO:root:
+layers.0.feed_forward.w3 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -2.980232238769531e-07, std: 0.0161285400390625
+
+INFO:root:
+layers.0.feed_forward.w2 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 11008])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -2.0265579223632812e-06, std: 0.016815185546875
+
+INFO:root:
+layers.0 - forward:
+Layer: TransformerBlock
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+
+INFO:root:
+layers.1.attention_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.07305908203125, std: 0.057220458984375
+
+INFO:root:
+layers.1.attention.wq - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -4.0531158447265625e-06, std: 0.026458740234375
+
+INFO:root:
+layers.1.attention.wk - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -2.3245811462402344e-06, std: 0.0264129638671875
+
+INFO:root:
+layers.1.attention.wv - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 1.5497207641601562e-06, std: 0.01004791259765625
+
+INFO:root:
+layers.1.attention.wo - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 5.960464477539063e-08, std: 0.00824737548828125
+
+INFO:root:
+layers.1.ffn_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.1019287109375, std: 0.01275634765625
+
+INFO:root:
+layers.1.feed_forward.w1 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -3.1888484954833984e-05, std: 0.018218994140625
+
+INFO:root:
+layers.1.feed_forward.w3 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: 2.9206275939941406e-06, std: 0.01715087890625
+
+INFO:root:
+layers.1.feed_forward.w2 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 11008])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 1.2516975402832031e-06, std: 0.01739501953125
+
+INFO:root:
+layers.1 - forward:
+Layer: TransformerBlock
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+
+INFO:root:
+layers.2.attention_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.176513671875, std: 0.020263671875
+
+INFO:root:
+layers.2.attention.wq - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 7.3909759521484375e-06, std: 0.0266265869140625
+
+INFO:root:
+layers.2.attention.wk - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 7.152557373046875e-07, std: 0.0279998779296875
+
+INFO:root:
+layers.2.attention.wv - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -6.556510925292969e-07, std: 0.01433563232421875
+
+INFO:root:
+layers.2.attention.wo - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -2.8014183044433594e-06, std: 0.01390838623046875
+
+INFO:root:
+layers.2.ffn_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.13525390625, std: 0.0125732421875
+
+INFO:root:
+layers.2.feed_forward.w1 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: 1.3649463653564453e-05, std: 0.0187225341796875
+
+INFO:root:
+layers.2.feed_forward.w3 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: 2.9802322387695312e-06, std: 0.0174560546875
+
+INFO:root:
+layers.2.feed_forward.w2 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 11008])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -7.748603820800781e-07, std: 0.017578125
+
+INFO:root:
+layers.2 - forward:
+Layer: TransformerBlock
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+
+INFO:root:
+layers.3.attention_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.287109375, std: 0.0231781005859375
+
+INFO:root:
+layers.3.attention.wq - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -8.344650268554688e-06, std: 0.0251922607421875
+
+INFO:root:
+layers.3.attention.wk - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 5.245208740234375e-06, std: 0.0261993408203125
+
+INFO:root:
+layers.3.attention.wv - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 1.0728836059570312e-06, std: 0.01360321044921875
+
+INFO:root:
+layers.3.attention.wo - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -6.9141387939453125e-06, std: 0.0133056640625
+
+INFO:root:
+layers.3.ffn_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.1717529296875, std: 0.01329803466796875
+
+INFO:root:
+layers.3.feed_forward.w1 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -4.172325134277344e-06, std: 0.0189971923828125
+
+INFO:root:
+layers.3.feed_forward.w3 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: 3.933906555175781e-06, std: 0.0175933837890625
+
+INFO:root:
+layers.3.feed_forward.w2 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 11008])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 5.185604095458984e-06, std: 0.0176239013671875
+
+INFO:root:
+layers.3 - forward:
+Layer: TransformerBlock
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+
+INFO:root:
+layers.4.attention_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.2626953125, std: 0.020172119140625
+
+INFO:root:
+layers.4.attention.wq - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 1.7881393432617188e-06, std: 0.026275634765625
+
+INFO:root:
+layers.4.attention.wk - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 1.3530254364013672e-05, std: 0.026824951171875
+
+INFO:root:
+layers.4.attention.wv - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -3.0994415283203125e-06, std: 0.0143585205078125
+
+INFO:root:
+layers.4.attention.wo - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -6.556510925292969e-07, std: 0.01404571533203125
+
+INFO:root:
+layers.4.ffn_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.1865234375, std: 0.0106964111328125
+
+INFO:root:
+layers.4.feed_forward.w1 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -4.827976226806641e-06, std: 0.0193939208984375
+
+INFO:root:
+layers.4.feed_forward.w3 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: 4.5299530029296875e-06, std: 0.0174560546875
+
+INFO:root:
+layers.4.feed_forward.w2 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 11008])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 5.364418029785156e-07, std: 0.017425537109375
+
+INFO:root:
+layers.4 - forward:
+Layer: TransformerBlock
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+
+INFO:root:
+layers.5.attention_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.269287109375, std: 0.0195159912109375
+
+INFO:root:
+layers.5.attention.wq - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -7.152557373046875e-06, std: 0.0264129638671875
+
+INFO:root:
+layers.5.attention.wk - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 4.827976226806641e-06, std: 0.027496337890625
+
+INFO:root:
+layers.5.attention.wv - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 6.616115570068359e-06, std: 0.01473236083984375
+
+INFO:root:
+layers.5.attention.wo - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -1.7881393432617188e-07, std: 0.01441192626953125
+
+INFO:root:
+layers.5.ffn_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.1973876953125, std: 0.01209259033203125
+
+INFO:root:
+layers.5.feed_forward.w1 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -2.1398067474365234e-05, std: 0.0195159912109375
+
+INFO:root:
+layers.5.feed_forward.w3 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: 3.039836883544922e-06, std: 0.0174560546875
+
+INFO:root:
+layers.5.feed_forward.w2 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 11008])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 9.5367431640625e-07, std: 0.0174407958984375
+
+INFO:root:
+layers.5 - forward:
+Layer: TransformerBlock
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+
+INFO:root:
+layers.6.attention_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.3330078125, std: 0.02496337890625
+
+INFO:root:
+layers.6.attention.wq - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 6.556510925292969e-07, std: 0.0249176025390625
+
+INFO:root:
+layers.6.attention.wk - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 1.7881393432617188e-06, std: 0.025421142578125
+
+INFO:root:
+layers.6.attention.wv - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 5.364418029785156e-07, std: 0.01366424560546875
+
+INFO:root:
+layers.6.attention.wo - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -1.430511474609375e-06, std: 0.0134735107421875
+
+INFO:root:
+layers.6.ffn_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.211181640625, std: 0.01163482666015625
+
+INFO:root:
+layers.6.feed_forward.w1 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -1.2516975402832031e-05, std: 0.0198516845703125
+
+INFO:root:
+layers.6.feed_forward.w3 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: 1.7285346984863281e-06, std: 0.01739501953125
+
+INFO:root:
+layers.6.feed_forward.w2 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 11008])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 2.7418136596679688e-06, std: 0.017333984375
+
+INFO:root:
+layers.6 - forward:
+Layer: TransformerBlock
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+
+INFO:root:
+layers.7.attention_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.344482421875, std: 0.027496337890625
+
+INFO:root:
+layers.7.attention.wq - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -7.212162017822266e-06, std: 0.024871826171875
+
+INFO:root:
+layers.7.attention.wk - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -9.953975677490234e-06, std: 0.024993896484375
+
+INFO:root:
+layers.7.attention.wv - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 2.1457672119140625e-06, std: 0.0138397216796875
+
+INFO:root:
+layers.7.attention.wo - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -5.543231964111328e-06, std: 0.013580322265625
+
+INFO:root:
+layers.7.ffn_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.2236328125, std: 0.01107025146484375
+
+INFO:root:
+layers.7.feed_forward.w1 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: 6.67572021484375e-06, std: 0.01983642578125
+
+INFO:root:
+layers.7.feed_forward.w3 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: 6.318092346191406e-06, std: 0.0174560546875
+
+INFO:root:
+layers.7.feed_forward.w2 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 11008])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 2.3245811462402344e-06, std: 0.017364501953125
+
+INFO:root:
+layers.7 - forward:
+Layer: TransformerBlock
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+
+INFO:root:
+layers.8.attention_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.338134765625, std: 0.025604248046875
+
+INFO:root:
+layers.8.attention.wq - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 8.702278137207031e-06, std: 0.025115966796875
+
+INFO:root:
+layers.8.attention.wk - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 2.8014183044433594e-06, std: 0.0252685546875
+
+INFO:root:
+layers.8.attention.wv - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 2.562999725341797e-06, std: 0.01421356201171875
+
+INFO:root:
+layers.8.attention.wo - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -8.344650268554688e-07, std: 0.01398468017578125
+
+INFO:root:
+layers.8.ffn_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.228271484375, std: 0.01031494140625
+
+INFO:root:
+layers.8.feed_forward.w1 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -7.62939453125e-06, std: 0.0195159912109375
+
+INFO:root:
+layers.8.feed_forward.w3 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: 1.7881393432617188e-06, std: 0.0176849365234375
+
+INFO:root:
+layers.8.feed_forward.w2 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 11008])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -2.1457672119140625e-06, std: 0.017547607421875
+
+INFO:root:
+layers.8 - forward:
+Layer: TransformerBlock
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+
+INFO:root:
+layers.9.attention_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.345947265625, std: 0.02398681640625
+
+INFO:root:
+layers.9.attention.wq - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 5.364418029785156e-07, std: 0.025146484375
+
+INFO:root:
+layers.9.attention.wk - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 1.1026859283447266e-05, std: 0.025787353515625
+
+INFO:root:
+layers.9.attention.wv - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 2.682209014892578e-06, std: 0.014495849609375
+
+INFO:root:
+layers.9.attention.wo - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 3.0994415283203125e-06, std: 0.01430511474609375
+
+INFO:root:
+layers.9.ffn_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.2333984375, std: 0.0097198486328125
+
+INFO:root:
+layers.9.feed_forward.w1 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -5.960464477539063e-08, std: 0.0193328857421875
+
+INFO:root:
+layers.9.feed_forward.w3 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -1.5497207641601562e-06, std: 0.0178070068359375
+
+INFO:root:
+layers.9.feed_forward.w2 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 11008])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 2.086162567138672e-06, std: 0.017669677734375
+
+INFO:root:
+layers.9 - forward:
+Layer: TransformerBlock
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+
+INFO:root:
+layers.10.attention_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.34765625, std: 0.026123046875
+
+INFO:root:
+layers.10.attention.wq - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 3.993511199951172e-06, std: 0.025115966796875
+
+INFO:root:
+layers.10.attention.wk - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 3.814697265625e-06, std: 0.02587890625
+
+INFO:root:
+layers.10.attention.wv - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 4.172325134277344e-06, std: 0.0143585205078125
+
+INFO:root:
+layers.10.attention.wo - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 1.0371208190917969e-05, std: 0.01424407958984375
+
+INFO:root:
+layers.10.ffn_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.23681640625, std: 0.00959014892578125
+
+INFO:root:
+layers.10.feed_forward.w1 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -1.633167266845703e-05, std: 0.0192718505859375
+
+INFO:root:
+layers.10.feed_forward.w3 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: 1.6093254089355469e-06, std: 0.0179901123046875
+
+INFO:root:
+layers.10.feed_forward.w2 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 11008])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 8.940696716308594e-07, std: 0.017822265625
+
+INFO:root:
+layers.10 - forward:
+Layer: TransformerBlock
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+
+INFO:root:
+layers.11.attention_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.383544921875, std: 0.027252197265625
+
+INFO:root:
+layers.11.attention.wq - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 1.2814998626708984e-05, std: 0.02386474609375
+
+INFO:root:
+layers.11.attention.wk - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -5.960464477539063e-08, std: 0.0238037109375
+
+INFO:root:
+layers.11.attention.wv - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -2.562999725341797e-06, std: 0.0149688720703125
+
+INFO:root:
+layers.11.attention.wo - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -2.4437904357910156e-06, std: 0.01483154296875
+
+INFO:root:
+layers.11.ffn_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.2445068359375, std: 0.00998687744140625
+
+INFO:root:
+layers.11.feed_forward.w1 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -2.0623207092285156e-05, std: 0.019195556640625
+
+INFO:root:
+layers.11.feed_forward.w3 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -1.1920928955078125e-06, std: 0.0181427001953125
+
+INFO:root:
+layers.11.feed_forward.w2 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 11008])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -2.562999725341797e-06, std: 0.0179290771484375
+
+INFO:root:
+layers.11 - forward:
+Layer: TransformerBlock
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+
+INFO:root:
+layers.12.attention_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.385498046875, std: 0.025665283203125
+
+INFO:root:
+layers.12.attention.wq - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 8.940696716308594e-07, std: 0.02435302734375
+
+INFO:root:
+layers.12.attention.wk - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 3.159046173095703e-06, std: 0.025115966796875
+
+INFO:root:
+layers.12.attention.wv - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -7.152557373046875e-07, std: 0.0147857666015625
+
+INFO:root:
+layers.12.attention.wo - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -3.2186508178710938e-06, std: 0.01465606689453125
+
+INFO:root:
+layers.12.ffn_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.251953125, std: 0.010284423828125
+
+INFO:root:
+layers.12.feed_forward.w1 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -2.7120113372802734e-05, std: 0.019073486328125
+
+INFO:root:
+layers.12.feed_forward.w3 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -2.5033950805664062e-06, std: 0.018310546875
+
+INFO:root:
+layers.12.feed_forward.w2 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 11008])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -1.1920928955078125e-06, std: 0.0180816650390625
+
+INFO:root:
+layers.12 - forward:
+Layer: TransformerBlock
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+
+INFO:root:
+layers.13.attention_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.392333984375, std: 0.0228729248046875
+
+INFO:root:
+layers.13.attention.wq - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 8.52346420288086e-06, std: 0.0241241455078125
+
+INFO:root:
+layers.13.attention.wk - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -1.1920928955078125e-07, std: 0.024566650390625
+
+INFO:root:
+layers.13.attention.wv - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -6.377696990966797e-06, std: 0.01531982421875
+
+INFO:root:
+layers.13.attention.wo - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 2.86102294921875e-06, std: 0.01517486572265625
+
+INFO:root:
+layers.13.ffn_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.25927734375, std: 0.00962066650390625
+
+INFO:root:
+layers.13.feed_forward.w1 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -2.205371856689453e-05, std: 0.019012451171875
+
+INFO:root:
+layers.13.feed_forward.w3 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: 2.0265579223632812e-06, std: 0.01849365234375
+
+INFO:root:
+layers.13.feed_forward.w2 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 11008])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -1.1920928955078125e-07, std: 0.0182342529296875
+
+INFO:root:
+layers.13 - forward:
+Layer: TransformerBlock
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+
+INFO:root:
+layers.14.attention_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.40185546875, std: 0.0245819091796875
+
+INFO:root:
+layers.14.attention.wq - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -5.9604644775390625e-06, std: 0.0240631103515625
+
+INFO:root:
+layers.14.attention.wk - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -6.079673767089844e-06, std: 0.0245361328125
+
+INFO:root:
+layers.14.attention.wv - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -2.384185791015625e-06, std: 0.01503753662109375
+
+INFO:root:
+layers.14.attention.wo - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 2.2649765014648438e-06, std: 0.01486968994140625
+
+INFO:root:
+layers.14.ffn_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.270263671875, std: 0.0102996826171875
+
+INFO:root:
+layers.14.feed_forward.w1 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -3.4749507904052734e-05, std: 0.0189666748046875
+
+INFO:root:
+layers.14.feed_forward.w3 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: 1.6093254089355469e-06, std: 0.0185089111328125
+
+INFO:root:
+layers.14.feed_forward.w2 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 11008])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -1.1920928955078125e-07, std: 0.01824951171875
+
+INFO:root:
+layers.14 - forward:
+Layer: TransformerBlock
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+
+INFO:root:
+layers.15.attention_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.391845703125, std: 0.0256195068359375
+
+INFO:root:
+layers.15.attention.wq - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 4.947185516357422e-06, std: 0.023773193359375
+
+INFO:root:
+layers.15.attention.wk - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 3.159046173095703e-06, std: 0.02459716796875
+
+INFO:root:
+layers.15.attention.wv - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 1.3113021850585938e-06, std: 0.0156402587890625
+
+INFO:root:
+layers.15.attention.wo - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -1.4901161193847656e-06, std: 0.01543426513671875
+
+INFO:root:
+layers.15.ffn_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.28125, std: 0.0099639892578125
+
+INFO:root:
+layers.15.feed_forward.w1 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -2.6047229766845703e-05, std: 0.019073486328125
+
+INFO:root:
+layers.15.feed_forward.w3 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -2.384185791015625e-07, std: 0.01861572265625
+
+INFO:root:
+layers.15.feed_forward.w2 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 11008])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -3.337860107421875e-06, std: 0.018310546875
+
+INFO:root:
+layers.15 - forward:
+Layer: TransformerBlock
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+
+INFO:root:
+layers.16.attention_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.4052734375, std: 0.0230712890625
+
+INFO:root:
+layers.16.attention.wq - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -2.384185791015625e-07, std: 0.023590087890625
+
+INFO:root:
+layers.16.attention.wk - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 1.1920928955078125e-07, std: 0.02423095703125
+
+INFO:root:
+layers.16.attention.wv - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -1.8477439880371094e-06, std: 0.01629638671875
+
+INFO:root:
+layers.16.attention.wo - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -4.76837158203125e-07, std: 0.0161285400390625
+
+INFO:root:
+layers.16.ffn_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.29931640625, std: 0.0113677978515625
+
+INFO:root:
+layers.16.feed_forward.w1 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -2.008676528930664e-05, std: 0.019195556640625
+
+INFO:root:
+layers.16.feed_forward.w3 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -4.172325134277344e-07, std: 0.0186004638671875
+
+INFO:root:
+layers.16.feed_forward.w2 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 11008])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -2.1457672119140625e-06, std: 0.0182952880859375
+
+INFO:root:
+layers.16 - forward:
+Layer: TransformerBlock
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+
+INFO:root:
+layers.17.attention_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.41796875, std: 0.0220184326171875
+
+INFO:root:
+layers.17.attention.wq - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 6.139278411865234e-06, std: 0.023406982421875
+
+INFO:root:
+layers.17.attention.wk - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 8.046627044677734e-06, std: 0.02392578125
+
+INFO:root:
+layers.17.attention.wv - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -7.987022399902344e-06, std: 0.0162353515625
+
+INFO:root:
+layers.17.attention.wo - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 1.2516975402832031e-05, std: 0.016143798828125
+
+INFO:root:
+layers.17.ffn_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.318115234375, std: 0.0144195556640625
+
+INFO:root:
+layers.17.feed_forward.w1 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -5.054473876953125e-05, std: 0.019378662109375
+
+INFO:root:
+layers.17.feed_forward.w3 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: 3.5762786865234375e-07, std: 0.018524169921875
+
+INFO:root:
+layers.17.feed_forward.w2 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 11008])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -3.933906555175781e-06, std: 0.018280029296875
+
+INFO:root:
+layers.17 - forward:
+Layer: TransformerBlock
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+
+INFO:root:
+layers.18.attention_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.44091796875, std: 0.02227783203125
+
+INFO:root:
+layers.18.attention.wq - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -2.980232238769531e-07, std: 0.02288818359375
+
+INFO:root:
+layers.18.attention.wk - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -5.602836608886719e-06, std: 0.0233917236328125
+
+INFO:root:
+layers.18.attention.wv - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 4.76837158203125e-06, std: 0.0170135498046875
+
+INFO:root:
+layers.18.attention.wo - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -4.291534423828125e-06, std: 0.0167694091796875
+
+INFO:root:
+layers.18.ffn_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.33544921875, std: 0.01525115966796875
+
+INFO:root:
+layers.18.feed_forward.w1 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -4.094839096069336e-05, std: 0.019561767578125
+
+INFO:root:
+layers.18.feed_forward.w3 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: 1.4901161193847656e-06, std: 0.0184783935546875
+
+INFO:root:
+layers.18.feed_forward.w2 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 11008])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -2.5033950805664062e-06, std: 0.0182647705078125
+
+INFO:root:
+layers.18 - forward:
+Layer: TransformerBlock
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+
+INFO:root:
+layers.19.attention_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.43896484375, std: 0.0235748291015625
+
+INFO:root:
+layers.19.attention.wq - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -3.993511199951172e-06, std: 0.0225982666015625
+
+INFO:root:
+layers.19.attention.wk - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -8.344650268554688e-06, std: 0.023040771484375
+
+INFO:root:
+layers.19.attention.wv - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -1.4901161193847656e-06, std: 0.01715087890625
+
+INFO:root:
+layers.19.attention.wo - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -1.0132789611816406e-06, std: 0.0169830322265625
+
+INFO:root:
+layers.19.ffn_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.346923828125, std: 0.0155029296875
+
+INFO:root:
+layers.19.feed_forward.w1 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -5.5670738220214844e-05, std: 0.019622802734375
+
+INFO:root:
+layers.19.feed_forward.w3 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -4.947185516357422e-06, std: 0.0184783935546875
+
+INFO:root:
+layers.19.feed_forward.w2 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 11008])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -1.7881393432617188e-06, std: 0.018310546875
+
+INFO:root:
+layers.19 - forward:
+Layer: TransformerBlock
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+
+INFO:root:
+layers.20.attention_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.44287109375, std: 0.0228729248046875
+
+INFO:root:
+layers.20.attention.wq - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 2.5033950805664062e-06, std: 0.0227508544921875
+
+INFO:root:
+layers.20.attention.wk - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 2.5033950805664062e-06, std: 0.023162841796875
+
+INFO:root:
+layers.20.attention.wv - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -3.933906555175781e-06, std: 0.017425537109375
+
+INFO:root:
+layers.20.attention.wo - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -4.76837158203125e-07, std: 0.017303466796875
+
+INFO:root:
+layers.20.ffn_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.359619140625, std: 0.016937255859375
+
+INFO:root:
+layers.20.feed_forward.w1 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -3.695487976074219e-05, std: 0.0197296142578125
+
+INFO:root:
+layers.20.feed_forward.w3 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -5.960464477539063e-08, std: 0.018463134765625
+
+INFO:root:
+layers.20.feed_forward.w2 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 11008])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -3.5762786865234375e-07, std: 0.0182952880859375
+
+INFO:root:
+layers.20 - forward:
+Layer: TransformerBlock
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+
+INFO:root:
+layers.21.attention_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.470947265625, std: 0.0243682861328125
+
+INFO:root:
+layers.21.attention.wq - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -6.556510925292969e-07, std: 0.0222320556640625
+
+INFO:root:
+layers.21.attention.wk - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 2.384185791015625e-07, std: 0.0224761962890625
+
+INFO:root:
+layers.21.attention.wv - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -2.0265579223632812e-06, std: 0.0179595947265625
+
+INFO:root:
+layers.21.attention.wo - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -1.2516975402832031e-06, std: 0.0177001953125
+
+INFO:root:
+layers.21.ffn_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.37255859375, std: 0.01788330078125
+
+INFO:root:
+layers.21.feed_forward.w1 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -3.8683414459228516e-05, std: 0.019866943359375
+
+INFO:root:
+layers.21.feed_forward.w3 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -1.3709068298339844e-06, std: 0.0184326171875
+
+INFO:root:
+layers.21.feed_forward.w2 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 11008])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 1.5497207641601562e-06, std: 0.0182952880859375
+
+INFO:root:
+layers.21 - forward:
+Layer: TransformerBlock
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+
+INFO:root:
+layers.22.attention_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.47705078125, std: 0.0267486572265625
+
+INFO:root:
+layers.22.attention.wq - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 1.6093254089355469e-06, std: 0.022705078125
+
+INFO:root:
+layers.22.attention.wk - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -5.0067901611328125e-06, std: 0.0229949951171875
+
+INFO:root:
+layers.22.attention.wv - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -2.1457672119140625e-06, std: 0.0180206298828125
+
+INFO:root:
+layers.22.attention.wo - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 2.6226043701171875e-06, std: 0.0177459716796875
+
+INFO:root:
+layers.22.ffn_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.38623046875, std: 0.0188446044921875
+
+INFO:root:
+layers.22.feed_forward.w1 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -1.7881393432617188e-05, std: 0.0199737548828125
+
+INFO:root:
+layers.22.feed_forward.w3 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -9.5367431640625e-07, std: 0.0184173583984375
+
+INFO:root:
+layers.22.feed_forward.w2 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 11008])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -2.1457672119140625e-06, std: 0.018310546875
+
+INFO:root:
+layers.22 - forward:
+Layer: TransformerBlock
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+
+INFO:root:
+layers.23.attention_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.5107421875, std: 0.024932861328125
+
+INFO:root:
+layers.23.attention.wq - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 6.794929504394531e-06, std: 0.022552490234375
+
+INFO:root:
+layers.23.attention.wk - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -5.066394805908203e-06, std: 0.0227203369140625
+
+INFO:root:
+layers.23.attention.wv - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 3.337860107421875e-06, std: 0.01885986328125
+
+INFO:root:
+layers.23.attention.wo - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 3.4570693969726562e-06, std: 0.0186309814453125
+
+INFO:root:
+layers.23.ffn_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.3984375, std: 0.0193328857421875
+
+INFO:root:
+layers.23.feed_forward.w1 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -1.3887882232666016e-05, std: 0.0199737548828125
+
+INFO:root:
+layers.23.feed_forward.w3 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: 8.344650268554688e-07, std: 0.0185089111328125
+
+INFO:root:
+layers.23.feed_forward.w2 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 11008])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 3.874301910400391e-06, std: 0.0184173583984375
+
+INFO:root:
+layers.23 - forward:
+Layer: TransformerBlock
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+
+INFO:root:
+layers.24.attention_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.50146484375, std: 0.030853271484375
+
+INFO:root:
+layers.24.attention.wq - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 2.4437904357910156e-06, std: 0.0219268798828125
+
+INFO:root:
+layers.24.attention.wk - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 9.834766387939453e-06, std: 0.02203369140625
+
+INFO:root:
+layers.24.attention.wv - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 2.0265579223632812e-06, std: 0.0186920166015625
+
+INFO:root:
+layers.24.attention.wo - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -2.0265579223632812e-06, std: 0.01837158203125
+
+INFO:root:
+layers.24.ffn_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.41162109375, std: 0.0199127197265625
+
+INFO:root:
+layers.24.feed_forward.w1 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -1.4543533325195312e-05, std: 0.02001953125
+
+INFO:root:
+layers.24.feed_forward.w3 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: 5.900859832763672e-06, std: 0.0185699462890625
+
+INFO:root:
+layers.24.feed_forward.w2 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 11008])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.0, std: 0.0184783935546875
+
+INFO:root:
+layers.24 - forward:
+Layer: TransformerBlock
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+
+INFO:root:
+layers.25.attention_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.54736328125, std: 0.026031494140625
+
+INFO:root:
+layers.25.attention.wq - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 1.0728836059570312e-06, std: 0.0221099853515625
+
+INFO:root:
+layers.25.attention.wk - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 6.854534149169922e-06, std: 0.022186279296875
+
+INFO:root:
+layers.25.attention.wv - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 3.6954879760742188e-06, std: 0.0193939208984375
+
+INFO:root:
+layers.25.attention.wo - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -2.384185791015625e-07, std: 0.0191192626953125
+
+INFO:root:
+layers.25.ffn_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.423095703125, std: 0.0193023681640625
+
+INFO:root:
+layers.25.feed_forward.w1 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -1.8358230590820312e-05, std: 0.0200653076171875
+
+INFO:root:
+layers.25.feed_forward.w3 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -2.2649765014648438e-06, std: 0.018646240234375
+
+INFO:root:
+layers.25.feed_forward.w2 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 11008])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 5.125999450683594e-06, std: 0.0185699462890625
+
+INFO:root:
+layers.25 - forward:
+Layer: TransformerBlock
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+
+INFO:root:
+layers.26.attention_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.529296875, std: 0.03179931640625
+
+INFO:root:
+layers.26.attention.wq - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 2.9206275939941406e-06, std: 0.021759033203125
+
+INFO:root:
+layers.26.attention.wk - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 8.64267349243164e-06, std: 0.0219268798828125
+
+INFO:root:
+layers.26.attention.wv - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -1.4901161193847656e-06, std: 0.01971435546875
+
+INFO:root:
+layers.26.attention.wo - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 2.562999725341797e-06, std: 0.0195770263671875
+
+INFO:root:
+layers.26.ffn_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.43798828125, std: 0.0194091796875
+
+INFO:root:
+layers.26.feed_forward.w1 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -1.901388168334961e-05, std: 0.0201263427734375
+
+INFO:root:
+layers.26.feed_forward.w3 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: 2.1457672119140625e-06, std: 0.018707275390625
+
+INFO:root:
+layers.26.feed_forward.w2 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 11008])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 1.1920928955078125e-07, std: 0.0186309814453125
+
+INFO:root:
+layers.26 - forward:
+Layer: TransformerBlock
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+
+INFO:root:
+layers.27.attention_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.5478515625, std: 0.025238037109375
+
+INFO:root:
+layers.27.attention.wq - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 8.940696716308594e-07, std: 0.0225677490234375
+
+INFO:root:
+layers.27.attention.wk - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 4.112720489501953e-06, std: 0.022796630859375
+
+INFO:root:
+layers.27.attention.wv - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 5.245208740234375e-06, std: 0.019744873046875
+
+INFO:root:
+layers.27.attention.wo - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -6.794929504394531e-06, std: 0.01971435546875
+
+INFO:root:
+layers.27.ffn_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.450927734375, std: 0.0184326171875
+
+INFO:root:
+layers.27.feed_forward.w1 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -1.4066696166992188e-05, std: 0.0201416015625
+
+INFO:root:
+layers.27.feed_forward.w3 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -2.9206275939941406e-06, std: 0.0188140869140625
+
+INFO:root:
+layers.27.feed_forward.w2 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 11008])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 5.0067901611328125e-06, std: 0.0187225341796875
+
+INFO:root:
+layers.27 - forward:
+Layer: TransformerBlock
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+
+INFO:root:
+layers.28.attention_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.5546875, std: 0.028350830078125
+
+INFO:root:
+layers.28.attention.wq - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 2.086162567138672e-06, std: 0.021942138671875
+
+INFO:root:
+layers.28.attention.wk - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -9.953975677490234e-06, std: 0.0222015380859375
+
+INFO:root:
+layers.28.attention.wv - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -1.0728836059570312e-06, std: 0.0203704833984375
+
+INFO:root:
+layers.28.attention.wo - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 1.5497207641601562e-06, std: 0.0202789306640625
+
+INFO:root:
+layers.28.ffn_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.460693359375, std: 0.0171966552734375
+
+INFO:root:
+layers.28.feed_forward.w1 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -1.7881393432617188e-07, std: 0.0200653076171875
+
+INFO:root:
+layers.28.feed_forward.w3 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -2.8014183044433594e-06, std: 0.0189971923828125
+
+INFO:root:
+layers.28.feed_forward.w2 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 11008])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -1.1920928955078125e-06, std: 0.0188446044921875
+
+INFO:root:
+layers.28 - forward:
+Layer: TransformerBlock
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+
+INFO:root:
+layers.29.attention_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.53857421875, std: 0.0321044921875
+
+INFO:root:
+layers.29.attention.wq - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 2.4437904357910156e-06, std: 0.0213623046875
+
+INFO:root:
+layers.29.attention.wk - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -3.2186508178710938e-06, std: 0.0215606689453125
+
+INFO:root:
+layers.29.attention.wv - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 2.384185791015625e-07, std: 0.02044677734375
+
+INFO:root:
+layers.29.attention.wo - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -8.940696716308594e-07, std: 0.0205230712890625
+
+INFO:root:
+layers.29.ffn_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.47412109375, std: 0.01788330078125
+
+INFO:root:
+layers.29.feed_forward.w1 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -1.3113021850585938e-06, std: 0.020111083984375
+
+INFO:root:
+layers.29.feed_forward.w3 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -4.76837158203125e-07, std: 0.0191650390625
+
+INFO:root:
+layers.29.feed_forward.w2 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 11008])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 3.337860107421875e-06, std: 0.0189056396484375
+
+INFO:root:
+layers.29 - forward:
+Layer: TransformerBlock
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+
+INFO:root:
+layers.30.attention_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.56298828125, std: 0.030517578125
+
+INFO:root:
+layers.30.attention.wq - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -3.814697265625e-06, std: 0.0214996337890625
+
+INFO:root:
+layers.30.attention.wk - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -5.781650543212891e-06, std: 0.02178955078125
+
+INFO:root:
+layers.30.attention.wv - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -4.947185516357422e-06, std: 0.02093505859375
+
+INFO:root:
+layers.30.attention.wo - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -8.52346420288086e-06, std: 0.021026611328125
+
+INFO:root:
+layers.30.ffn_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.47802734375, std: 0.0185089111328125
+
+INFO:root:
+layers.30.feed_forward.w1 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -1.1920928955078125e-07, std: 0.02056884765625
+
+INFO:root:
+layers.30.feed_forward.w3 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -2.384185791015625e-07, std: 0.0194854736328125
+
+INFO:root:
+layers.30.feed_forward.w2 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 11008])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -1.2516975402832031e-06, std: 0.018798828125
+
+INFO:root:
+layers.30 - forward:
+Layer: TransformerBlock
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+
+INFO:root:
+layers.31.attention_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.461669921875, std: 0.040069580078125
+
+INFO:root:
+layers.31.attention.wq - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 2.9802322387695312e-06, std: 0.021759033203125
+
+INFO:root:
+layers.31.attention.wk - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -9.357929229736328e-06, std: 0.022552490234375
+
+INFO:root:
+layers.31.attention.wv - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -2.086162567138672e-06, std: 0.019073486328125
+
+INFO:root:
+layers.31.attention.wo - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: -8.404254913330078e-06, std: 0.0192718505859375
+
+INFO:root:
+layers.31.ffn_norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 0.42724609375, std: 0.02838134765625
+
+INFO:root:
+layers.31.feed_forward.w1 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -7.152557373046875e-07, std: 0.0214691162109375
+
+INFO:root:
+layers.31.feed_forward.w3 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 11008])
+Weight mean: -5.364418029785156e-07, std: 0.0202484130859375
+
+INFO:root:
+layers.31.feed_forward.w2 - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 11008])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 1.4901161193847656e-06, std: 0.018768310546875
+
+INFO:root:
+layers.31 - forward:
+Layer: TransformerBlock
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+
+INFO:root:
+norm - forward:
+Layer: RMSNorm
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 4096])
+Weight mean: 1.7822265625, std: 0.11700439453125
+
+INFO:root:
+output - forward:
+Layer: Linear
+Input shape: torch.Size([4, 581, 4096])
+Output shape: torch.Size([4, 581, 32000])
+Weight mean: -1.436471939086914e-05, std: 0.0172882080078125
+

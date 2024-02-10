@@ -17,8 +17,33 @@ from clip import load
 
     # [print(tkzr.decode(x)) for x in src_txt.tolist()]
     # print('tgt:', tkzr.decode(tgt.tolist())) 
-# print('src_txt, src_img, tgt', src_txt.shape, src_img.shape, tgt.shape)
 
+import logging
+logging.basicConfig(filename='log.txt', level=logging.INFO, filemode='w')
+
+def register_hooks(module, module_name_prefix='', sub=False):
+  def forward_hook(module, input, output):
+    log_message = f"\n{module_name_prefix} - forward:\n"
+    log_message += f"Layer: {module.__class__.__name__}\n"
+    if hasattr(input[0], 'shape'):
+      log_message += f"Input shape: {input[0].shape}\n"
+    if hasattr(output, 'shape'):
+      log_message += f"Output shape: {output.shape}\n"
+    if hasattr(module, 'weight'):
+      log_message += f"Weight mean: {module.weight.data.mean()}, std: {module.weight.data.std()}\n"
+    logging.info(log_message)
+
+  def backward_hook(module, grad_input, grad_output):
+    log_message = f"{module_name_prefix} - backward:\n"
+    logging.info(log_message)
+
+  module.register_forward_hook(forward_hook)
+  module.register_full_backward_hook(backward_hook)
+
+  if sub:
+    for name, child in module.named_children():
+      new_prefix = f"{module_name_prefix}.{name}" if module_name_prefix else name
+      register_hooks(child, new_prefix, sub)
 
 # llama
 
@@ -452,9 +477,10 @@ def train(train_len=20, bsz=3, accum=4):
         pass
         # print(f"{name} - row\n{param.data[0]}")
         # print(f"{name} - col\n{param.data[:, 0]}")
+
+  register_hooks(model, sub=True)
   
   optimizer = optim.SGD(model.parameters(), lr=1e-4, momentum=0.9)
-  # optimizer.zero_grad()
   loss_fn = nn.CrossEntropyLoss()
   ds = Dataset(bsz=bsz)
   gradient_accumulators = {}
@@ -463,18 +489,7 @@ def train(train_len=20, bsz=3, accum=4):
     src_txt, src_img, tgt = ds[n]
     # print('\n src_txt, src_img, tgt', src_txt.shape, src_img.shape, tgt.shape)
     logits = model.forward(src_txt, src_img)
-
-
-    make_dot(logits, params=dict(list(model.named_parameters()))).render("rnn_torchviz", format="svg")
     return
-    # Visualize the first batch's computational graph
-    if n == 1:
-      make_dot(
-        logits, 
-        params=dict(model.named_parameters())
-      ).render("model_graph", format="svg", engine='dot', graph_attr={'size':'10,10'})
-    return
-    # ).render("model_graph", format="svg", engine='dot', )
 
     split_idx = src_txt.shape[1] - 1
     if split_idx == 0: continue

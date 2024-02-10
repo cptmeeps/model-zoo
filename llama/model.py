@@ -39,7 +39,7 @@ def reg_mem_hooks(module, module_name_prefix='', sub=False):
       f"cached: {torch.cuda.memory_reserved('cuda')/1024**3:.1f}",
     )
   module.register_forward_hook(forward_hook)
-  module.register_full_backward_hook(backward_hook)
+  # module.register_full_backward_hook(backward_hook)
 
   if sub:
     for name, child in module.named_children():
