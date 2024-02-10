@@ -436,7 +436,7 @@ def train(train_len=20, bsz=3, accum=4):
       init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='relu')
       if m.bias is not None:
         init.constant_(m.bias, 0)
-      print(f"kaiming normal init: {name}")
+      # print(f"kaiming normal init: {name}")
 
   for name, param in model.named_parameters():
     if 'clip' in name:
@@ -450,9 +450,9 @@ def train(train_len=20, bsz=3, accum=4):
     if param.requires_grad:
       if "weight" in name:
         pass
-        print(f"{name} - row\n{param.data[0]}")
-        print(f"{name} - col\n{param.data[:, 0]}")
-
+        # print(f"{name} - row\n{param.data[0]}")
+        # print(f"{name} - col\n{param.data[:, 0]}")
+  
   optimizer = optim.SGD(model.parameters(), lr=1e-4, momentum=0.9)
   # optimizer.zero_grad()
   loss_fn = nn.CrossEntropyLoss()
@@ -464,13 +464,18 @@ def train(train_len=20, bsz=3, accum=4):
     # print('\n src_txt, src_img, tgt', src_txt.shape, src_img.shape, tgt.shape)
     logits = model.forward(src_txt, src_img)
 
+
+    make_dot(logits, params=dict(list(model.named_parameters()))).render("rnn_torchviz", format="png")
+    return
     # Visualize the first batch's computational graph
     if n == 1:
       make_dot(
         logits, 
         params=dict(model.named_parameters())
-      ).render("model_graph", format="svg")
+      ).render("model_graph", format="svg", engine='dot', graph_attr={'size':'10,10'})
     return
+    # ).render("model_graph", format="svg", engine='dot', )
+
     split_idx = src_txt.shape[1] - 1
     if split_idx == 0: continue
     logits = logits[:, -split_idx:, :]
