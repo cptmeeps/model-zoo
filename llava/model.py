@@ -465,7 +465,7 @@ def train(train_len=20, bsz=3, accum=4):
     logits = model.forward(src_txt, src_img)
 
 
-    make_dot(logits, params=dict(list(model.named_parameters()))).render("rnn_torchviz", format="png")
+    make_dot(logits, params=dict(list(model.named_parameters()))).render("rnn_torchviz", format="svg")
     return
     # Visualize the first batch's computational graph
     if n == 1:
