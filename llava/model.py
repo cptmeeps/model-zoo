@@ -469,7 +469,7 @@ def train(train_len=20, bsz=3, accum=4):
       make_dot(
         logits, 
         params=dict(model.named_parameters())
-      ).render("model_graph", format="png")
+      ).render("model_graph", format="svg")
     return
     split_idx = src_txt.shape[1] - 1
     if split_idx == 0: continue
