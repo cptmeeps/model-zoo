@@ -4,7 +4,7 @@ sudo apt update && sudo apt upgrade -y
 sudo apt-get install unzip
 sudo apt-get install graphviz
 
-pip3 install numpy panda torch ftfy 
+pip3 install numpy panda torch ftfy matplotlib
 pip3 install regex sentencepiece 
 
 sudo apt install git
